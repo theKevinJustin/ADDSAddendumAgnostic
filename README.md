@@ -1,16 +1,16 @@
 # ADDSAddendumAgnostic
-Microsoft.Windows.Server.AD.2016.Monitoring.Addendum v1.0.4.5
+Microsoft.Windows.Server.AD.2016.Monitoring.Addendum v1.0.4.6
 
 Download [here](https://github.com/theKevinJustin/ADDSAddendumAgnostic/blob/main/Microsoft.Windows.Server.AD.2016.Monitoring.Addendum.xml)
 
 ### Microsoft Windows Server ADDS 2016+ Monitoring Addendum
 Management pack configures rules/monitors, disables noisy rules, adds alert cleanup, summary report, team report, on-demand tasks, component alert monitor to simplify when a DC is down, and lastly service recovery automation
 
-
 Blog [https://kevinjustin.com/blog/2023/08/18/adds-addendum-packs/](https://kevinjustin.com/blog/2023/08/18/adds-addendum-packs/)
 
 # Version History:
 ```
+v1.0.4.6   4 Jan 2024 Verified Resolution State logic improvements for large environments
 v1.0.4.5  21 Dec 2023 whitespace audit, ResolutionState changes, performance changes to DS/WA
 v1.0.4.2  13 Dec 2023 Updated Rule closure logic, updated Group PolicyReport DS/WA, gpsvc service monitor
 v1.0.4.1  12 Dec 2023 Updated reset logic to use Management Pack, removed ID property from reset logic
