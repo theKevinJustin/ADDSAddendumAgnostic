@@ -2,7 +2,7 @@
   <Manifest>
     <Identity>
       <ID>Microsoft.Windows.Server.AD.2016.Monitoring.Addendum</ID>
-      <Version>1.0.4.5</Version>
+      <Version>1.0.4.7</Version>
     </Identity>
     <Name>Microsoft Windows Server AD 2016 Monitoring Addendum</Name>
     <References>
@@ -70,7 +70,7 @@
                 </Scheduler>
               </DataSource>
               <ProbeAction ID="PA" TypeID="Windows!Microsoft.Windows.PowerShellPropertyBagTriggerOnlyProbe">
-                <ScriptName>Proactive.DailyTasks.ADDSAlerts.Close.Script.Datasource.v1045.ps1</ScriptName>
+                <ScriptName>Proactive.DailyTasks.ADDSAlerts.Close.Script.Datasource.v1047.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
 #  Script to gather ADDS alerts and close via on demand task
@@ -84,7 +84,7 @@
 #=================================================================================
 # Assign script name variable for use in event logging.
 # ScriptName should be the same as the ID of the module that the script is contained in
-$ScriptName = "Proactive.DailyTasks.ADDSAlerts.Close.Script.Datasource.v1045.ps1"
+$ScriptName = "Proactive.DailyTasks.ADDSAlerts.Close.Script.Datasource.v1047.ps1"
 $EventID = "550"
 #=================================================================================
 
@@ -98,7 +98,7 @@ $whoami = whoami
 # Load MOMScript API
 $momapi = New-Object -comObject MOM.ScriptAPI
 #Log script event that we are starting task
-$momapi.LogScriptEvent($ScriptName,$EventID,0,"Script is starting. `n Running as ($whoami).")
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"Proactive DailyTasks ADDSAlerts Close Script is starting. `n Running as ($whoami).")
 #=================================================================================
 
 
@@ -164,7 +164,7 @@ if ( $SCOMCoreReportAlerts.Count -eq 0 )
 	$Message = "ZERO alerts for ADDS alert closure workflow for ($date)"
 	$momapi.LogScriptEvent($ScriptName,$EventID,0,"$Message")
 	}
-	
+
 if ( $SCOMCoreReportAlerts.Count -gt 0 )
 	{
 	#
@@ -184,7 +184,7 @@ if ( $SCOMCoreReportAlerts.Count -gt 0 )
 	$ADDSComponentMessage += "#========================================="
 	$ADDSComponentMessage += ""
 	}
-	
+
 $ADDSComponentMessage
 
 $ADDSComponentMessage = $ADDSComponentMessage | out-string
@@ -269,7 +269,7 @@ if ( $SCOMCoreReportAlerts.Count -gt 0 )
 						$ActiveMonitor.ID
 						write-host " Resetting Health State on '" + $ActiveMonitor.FullName + "'" 
 						write-host ""
-						$ActiveMonitor.ResetMonitoringState($ActiveMonitor)
+						$ActiveMonitor.ResetMonitoringState($ActiveMonitor.ID)
 						}
 					}
 				}
@@ -310,7 +310,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"Proactive DailyTasks ADDS rule re
 #Log an event for script ending and total execution time.
 $EndTime = Get-Date
 $ScriptTime = ($EndTime - $StartTime).TotalSeconds
-$momapi.LogScriptEvent($ScriptName,$EventID,0,"Script Completed. `n Script Runtime: ($ScriptTime) seconds.")
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"Proactive DailyTasks ADDSAlerts Close Script Script Completed. `n Script Runtime: ($ScriptTime) seconds.")
 #=================================================================================
 # End of script
                 </ScriptBody>
@@ -351,7 +351,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"Script Completed. `n Script Runti
                 </Scheduler>
               </DataSource>
               <ProbeAction ID="PA" TypeID="Windows!Microsoft.Windows.PowerShellPropertyBagTriggerOnlyProbe">
-                <ScriptName>Proactive.DailyTasks.ADDSAlerts.SummaryReport.Script.Alert.DataSource.v1045.ps1</ScriptName>
+                <ScriptName>Proactive.DailyTasks.ADDSAlerts.SummaryReport.Script.Alert.DataSource.v1047.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
 #  Script to gather ADDS alerts and close via on demand task
@@ -365,7 +365,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"Script Completed. `n Script Runti
 #=================================================================================
 # Assign script name variable for use in event logging.
 # ScriptName should be the same as the ID of the module that the script is contained in
-$ScriptName = "Proactive.DailyTasks.ADDSAlerts.SummaryReport.Script.Alert.DataSource.v1045.ps1"
+$ScriptName = "Proactive.DailyTasks.ADDSAlerts.SummaryReport.Script.Alert.DataSource.v1047.ps1"
 $EventID = "552"
 #=================================================================================
 
@@ -379,7 +379,7 @@ $whoami = whoami
 # Load MOMScript API
 $momapi = New-Object -comObject MOM.ScriptAPI
 #Log script event that we are starting task
-$momapi.LogScriptEvent($ScriptName,$EventID,0,"Script is starting. `n Running as ($whoami).")
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"Proactive DailyTasks ADDSAlerts SummaryReport Script is starting. `n Running as ($whoami).")
 #=================================================================================
 
 
@@ -757,7 +757,7 @@ $bag
 #Log an event for script ending and total execution time.
 $EndTime = Get-Date
 $ScriptTime = ($EndTime - $StartTime).TotalSeconds
-$momapi.LogScriptEvent($ScriptName,$EventID,0,"Script Completed. `n Script Runtime: ($ScriptTime) seconds.")
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"Proactive DailyTasks ADDSAlerts SummaryReport Script Completed. `n Script Runtime: ($ScriptTime) seconds.")
 #=================================================================================
 # End of script
                 </ScriptBody>
@@ -798,7 +798,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"Script Completed. `n Script Runti
                 </Scheduler>
               </DataSource>
               <ProbeAction ID="PA" TypeID="Windows!Microsoft.Windows.PowerShellPropertyBagTriggerOnlyProbe">
-                <ScriptName>Proactive.Microsoft.Windows.Server.Addendum.AD.2016.Reports.Datasource.v1045.ps1</ScriptName>
+                <ScriptName>Proactive.Microsoft.Windows.Server.Addendum.AD.2016.Reports.Datasource.v1047.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
 #  Script to gather ADDS alerts for team daily report
@@ -812,7 +812,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"Script Completed. `n Script Runti
 #=================================================================================
 # Assign script name variable for use in event logging.
 # ScriptName should be the same as the ID of the module that the script is contained in
-$ScriptName = "Proactive.Microsoft.Windows.Server.Addendum.AD.2016.Reports.Datasource.v1045.ps1"
+$ScriptName = "Proactive.Microsoft.Windows.Server.Addendum.AD.2016.Reports.Datasource.v1047.ps1"
 $EventID = "563"
 #=================================================================================
 
@@ -826,7 +826,7 @@ $whoami = whoami
 # Load MOMScript API
 $momapi = New-Object -comObject MOM.ScriptAPI
 #Log script event that we are starting task
-$momapi.LogScriptEvent($ScriptName,$EventID,0,"Script is starting. `n Running as ($whoami).")
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"Proactive Microsoft Windows Server Addendum AD 2016 Reports Script is starting. `n Running as ($whoami).")
 #=================================================================================
 
 
@@ -858,7 +858,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"Gather ADDS Alerts for date ($dat
 
 # Gather ADDS alerts
 # Monitors then rules
-$ADDSReportAlerts = get-scomalert -ResolutionState (0..254) | ? { ( $_.Name -eq "Available Megabytes of Memory is too low" ) `
+$ADDSReportAlerts = get-scomalert | ? { ( $_.Name -eq "Available Megabytes of Memory is too low" ) `
 	-OR ( $_.Name -eq "Certificate lifespan alert" ) `
 	-OR ( $_.Name -eq "Component stopped alert" ) `
 	-OR ( $_.Name -like "DFS-R: *" ) `
@@ -884,7 +884,7 @@ $ADDSReportAlerts = get-scomalert -ResolutionState (0..254) | ? { ( $_.Name -eq 
 	-OR ( $_.Name -eq "Max Concurrent API Reached alert" ) `
 	-OR ( $_.Name -eq "Memory Pages Per Second is too High." ) `
 	-OR ( $_.Name -eq "Network Adapter Disconnected" ) `
-	-OR ( $_.Name -like "NG Tangible ProV ProVService Service*" ) `
+	-OR ( $_.Name -like "Tangible ProV ProVService Service*" ) `
 	-OR ( $_.Name -eq "NTFS - File System Corrupt" ) `
 	-OR ( $_.Name -eq "NTFS reported the logical disk is in error or corrupt." ) `
 	-OR ( $_.Name -eq "Percentage of Committed Memory in Use is too high" ) `
@@ -914,104 +914,71 @@ $ADDSReportAlerts = get-scomalert -ResolutionState (0..254) | ? { ( $_.Name -eq 
 	-OR ( $_.Name -eq "The Group Policy Update health monitor has failed." ) `
 	-OR ( $_.Name -eq "Group policy processing aborted - cannot determine site" ) `
 	-OR ( $_.Name -eq "Policy Update Failure" ) `
-	}  | ? { ( $_.TimeRaised -ge $Time ) }
+	}  # | ? { ( $_.TimeRaised -ge $Time ) }
 
 $ADDSReportAlerts.Count
 
 
 # Open ADDS server alerts
 $ADDSServerAlerts = $ADDSReportAlerts | ? { ( $_.NetBiosComputerName -like "DC0*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W4NHAAH7*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AAA0*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AAA1*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AAA4*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AAA7*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AAC1*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AADH*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AAH0*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AAH1*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AAH2*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AAH3*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AAH4*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AAH6*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AAH8*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AAK9*" ) `
 	-OR ( $_.MonitoringObjectDisplayName -like "DC0*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W4NHAAH7*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AAA0*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AAA1*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AAA4*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AAA7*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AAC1*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AADH*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AAH0*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AAH1*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AAH2*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AAH3*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AAH4*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AAH6*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AAH8*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AAK9*" ) `
 	}
 
-#$ADDSServerAlerts 
-$ADDSServerAlerts.Count
+# $ADDSServerAlerts 
+# $ADDSServerAlerts.Count
 
 
 # Open ADDS server alerts
-$ADDSOpenAlerts = $ADDSServerAlerts
-$ADDSOpenAlerts.Count
+$ADDSOpenAlerts = $ADDSServerAlerts | where { $_.ResolutionState -ne "255" }
+# $ADDSOpenAlerts.Count
 
 # Open ADDS server alerts since last report
-$ADDSAlertsSinceReport = $ADDSServerAlerts | ? { ( $_.TimeRaised -ge $Time ) }
-$ADDSAlertsSinceReport.Count
+$ADDSAlertsSinceReport = $ADDSOpenAlerts | where { ( $_.TimeRaised -ge $Time ) }
+# $ADDSAlertsSinceReport.Count
+
 
 # Closed ADDS server alerts
-$ClosedADDSAlerts = get-SCOMAlert -ResolutionState 255 | ? { ( $_.Name -eq "Available Megabytes of Memory is too low" ) `
-	-OR ( $_.Name -eq "Certificate lifespan alert" ) `
-	-OR ( $_.Name -eq "Component stopped alert" ) `
-	-OR ( $_.Name -like "DFS-R: *" ) `
-	-OR ( $_.Name -like "DHCP*" ) `
-	-OR ( $_.Name -eq "DHCP Service Stopped" ) `
-	-OR ( $_.Name -eq "Disk read latency  is too high" ) `
-	-OR ( $_.Name -eq "Disk write latency  is too high" ) `
-	-OR ( $_.Name -eq "DNS Client Service Stopped" ) `
-	-OR ( $_.Name -eq "Event log is full" ) `
-	-OR ( $_.Name -eq "Fail to access site system alert" ) `
-	-OR ( $_.Name -eq "Failed to Connect to Computer" ) `
-	-OR ( $_.Name -eq "Failed to install application on client" ) `
-	-OR ( $_.Name -eq "File Dispatch Manager Not Connecting to Site Server" ) `
-	-OR ( $_.Name -eq "Free System Page Table Entries is too Low." ) `
-	-OR ( $_.Name -eq "Health Service Heartbeat Failure" ) `
-	-OR ( $_.Name -eq "IP address conflict" ) `
-	-OR ( $_.Name -eq "LDM - Can't Read Disk" ) `
-	-OR ( $_.Name -eq "Logical Disk Fragmentation Level is high" ) `
-	-OR ( $_.Name -eq "Logical Disk Free Space is low" ) `
-	-OR ( $_.Name -eq "Logical disk idle time percentage is too low" ) `
-	-OR ( $_.Name -eq "Logical disk current queue length is too high" ) `
-	-OR ( $_.Name -eq "Logical disk transfer (reads and writes) latency  is too high" ) `
-	-OR ( $_.Name -eq "Max Concurrent API Reached alert" ) `
-	-OR ( $_.Name -eq "Memory Pages Per Second is too High." ) `
-	-OR ( $_.Name -eq "Network Adapter Disconnected" ) `
-	-OR ( $_.Name -like "NG Tangible ProV ProVService Service*" ) `
-	-OR ( $_.Name -eq "NTFS - File System Corrupt" ) `
-	-OR ( $_.Name -eq "NTFS reported the logical disk is in error or corrupt." ) `
-	-OR ( $_.Name -eq "Percentage of Committed Memory in Use is too high" ) `
-	-OR ( $_.Name -like "PROACTIVE*" ) `
-	-OR ( $_.Name -eq "Service entered unpredictable state" ) `
-	-OR ( $_.Name -eq "Service is misconfigured" ) `
-	-OR ( $_.Name -eq "Service or driver failed to start" ) `
-	-OR ( $_.Name -eq "Server Service is misconfigured" ) `
-	-OR ( $_.Name -eq "Service terminated unexpectedly" ) `
-	-OR ( $_.Name -eq "Share configuration is invalid" ) `
-	-OR ( $_.Name -eq "Software update installation failed" ) `
-	-OR ( $_.Name -eq "TCP/IP NetBIOS Service Stopped" ) `
-	-OR ( $_.Name -eq "The LDAP Bind Time health monitor has exceeded one or more thresholds." ) `
-	-OR ( $_.Name -eq "Too many requests for performance counter data have timed out" ) `
-	-OR ( $_.Name -eq "Total CPU Utilization Percentage is too high" ) `
-	-OR ( $_.Name -eq "Total DPC Time Percentage is too high" ) `
-	-OR ( $_.Name -eq "Total Percentage Interrupt Time is too high" ) `
-	-OR ( $_.Name -eq "Used total bandwidth is over threshold" ) `
-	-OR ( $_.Name -eq "Used write bandwidth is over threshold" ) `
-	-OR ( $_.Name -like "Windows DNS *" ) `
-	-OR ( $_.Name -eq "Windows Event Log Service Stopped" ) `
-	-OR ( $_.Name -eq "Windows Firewall Service Stopped" ) `
-	-OR ( $_.Name -eq "Windows Remote Management Service Stopped" ) `
-	-OR ( $_.Name -eq "Windows Required Activation" ) `
-	-OR ( $_.Name -eq "Windows Server Service Stopped" ) `
-	-OR ( $_.Name -eq "Windows Storport Miniport Driver has timed out a request" ) `
-	-OR ( $_.Name -eq "The Group Policy Update health monitor has failed." ) `
-	-OR ( $_.Name -eq "Group policy processing aborted - cannot determine site" ) `
-	-OR ( $_.Name -eq "Policy Update Failure" ) `
-	}
-$ClosedADDSAlerts.Count
+$ADDSClosedAlerts = $ADDSServerAlerts | where { $_.ResolutionState -eq "255" }
+# $ADDSClosedAlerts.Count
+
+# Closed ADDS server alerts since last report
+$ADDSAlertsSinceReport = $ADDSClosedAlerts | where { ( $_.TimeRaised -ge $Time ) }
+# $ADDSAlertsSinceReport.Count
+
+$ClosedADDSAlerts = $ADDSClosedAlerts 
+# $ClosedADDSAlerts.Count
 
 
-# Open ADDS server alerts
-$ADDSServerAlerts = $ADDSReportAlerts | ? { ( $_.NetBiosComputerName -like "DC0*" ) `
-	-OR ( $_.MonitoringObjectDisplayName -like "DC0*" ) `
-	}
-
-#$ADDSServerAlerts 
-$ADDSServerAlerts.Count
-
-# Open ADDS server alerts
-$ADDSOpenAlerts = $ADDSServerAlerts
-$ADDSOpenAlerts.Count
-
-# Open ADDS server alerts since last report
-$ADDSAlertsSinceReport = $ADDSServerAlerts | ? { ( $_.TimeRaised -ge $Time ) }
-$ADDSAlertsSinceReport.Count
 
 
 #
@@ -1058,7 +1025,7 @@ $ClosedNotPatched = $ClosedADDSAlert | ? { ( $_.Name -eq "PROACTIVE - Server NOT
 
 
 # Tangible ProV/DODVisitor DC service
-$ProVAlerts = $ADDSServerAlerts | ? { ( $_.Name -like "NG Tangible ProV*" ) }
+$ProVAlerts = $ADDSServerAlerts | ? { ( $_.Name -like "Tangible ProV*" ) }
 
 #$ProVAlerts.Count
 $ProVAlerts | select NetBiosComputerName,TimeRaised
@@ -1066,7 +1033,7 @@ $ProVAlerts | select NetBiosComputerName,TimeRaised
 $OpenProVAlerts = $ProVAlerts
 #$OpenProVAlerts.Count
 
-$ClosedProVAlerts = $ClosedADDSAlert | ? { ( $_.Name -like "NG Tangible ProV*" ) }
+$ClosedProVAlerts = $ClosedADDSAlert | ? { ( $_.Name -like "Tangible ProV*" ) }
 #$ClosedProVAlerts.Count
 
 
@@ -1171,7 +1138,7 @@ $ADDSRemaining = @()
 $ADDSRemaining = $ADDSOpenAlerts | ? { ( $_.Name -notlike "PROACTIVE - Server*" ) }`
 	| ? { ( $_.Name -notlike "Logical disk Free space is low*" ) } `
 	| ? { ( $_.Name -notlike "Certificate lifespan alert*" ) } `
-	| ? { ( $_.Name -notlike "NG Tangible ProV*" ) } `
+	| ? { ( $_.Name -notlike "Tangible ProV*" ) } `
 	| ? { ( $_.Name -notlike "DFS-R: *" ) } `
 	| ? { ( $_.Name -notlike "Windows DNS *" ) } `
 	| ? { ( $_.Name -notlike "DHCP*" ) } `
@@ -1179,7 +1146,7 @@ $ADDSRemaining = $ADDSOpenAlerts | ? { ( $_.Name -notlike "PROACTIVE - Server*" 
 	| ? { ( $_.Name -ne "Failed to install application on client" ) } `
 	| ? { ( $_.Name -ne "Health Service Heartbeat Failure" ) } `
 	| ? { ( $_.Name -ne "Percentage of Committed Memory in Use is too high" ) } `
-	| ? { ( $_.Name -ne "NG Tangible ProV ProVService Service*" ) } `
+	| ? { ( $_.Name -ne "Tangible ProV ProVService Service*" ) } `
 	| ? { ( $_.Name -ne "Total CPU Utilization Percentage is too high" ) } `
 	| ? { ( $_.Name -ne "VMware (High): Virtual Machine CPU Usage is High" ) } `
 	| ? { ( $_.Name -ne "The LSASS process has exceeded the processor utilization threshold over multiple samples." ) } `
@@ -1204,19 +1171,56 @@ $ADDSFormattedRemaining = $ADDSRemaining | select NetbiosComputerName,TimeRaised
   $instance = ( $Class | ? { $_.Name -like "Microsoft.Windows.Computer" }  |Get-SCOMClassInstance )
 
   $MM = ($Instance | ? { $_.InMaintenanceMode -eq "True" }).DisplayName `
-	| ? { ( $_.DisplayName -like "DC0*" ) }
+	| ? { ( $_.DisplayName -like "DC0*" ) `
+	-OR ( $_.DisplayName -like "*W4NHAAH7*" ) `
+	-OR ( $_.DisplayName -like "*W054AAA0*" ) `
+	-OR ( $_.DisplayName -like "*W054AAA1*" ) `
+	-OR ( $_.DisplayName -like "*W054AAA4*" ) `
+	-OR ( $_.DisplayName -like "*W054AAA7*" ) `
+	-OR ( $_.DisplayName -like "*W054AAC1*" ) `
+	-OR ( $_.DisplayName -like "*W054AADH*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH0*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH1*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH2*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH3*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH4*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH6*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH8*" ) `
+	-OR ( $_.DisplayName -like "*W054AAK9*" ) `
+	}
 	write-host "MM Maintenance mode Agents `n" ; $Unhealthy.InputObject
     $MaintM = $MM | sort | out-string
 
 #   $UnHealthyAgents = get-scomagent
 $UnHealthyAgents = ( get-scomagent | ? { $_.HealthState -ne "Success" }).DisplayName `
-	| ? { ( $_.DisplayName -like "DC0*" ) }
+	| ? { ( $_.DisplayName -like "DC0*" ) `
+	-OR ( $_.DisplayName -like "*W4NHAAH7*" ) `
+	-OR ( $_.DisplayName -like "*W054AAA0*" ) `
+	-OR ( $_.DisplayName -like "*W054AAA1*" ) `
+	-OR ( $_.DisplayName -like "*W054AAA4*" ) `
+	-OR ( $_.DisplayName -like "*W054AAA7*" ) `
+	-OR ( $_.DisplayName -like "*W054AAC1*" ) `
+	-OR ( $_.DisplayName -like "*W054AADH*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH0*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH1*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH2*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH3*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH4*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH6*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH8*" ) `
+	-OR ( $_.DisplayName -like "*W054AAK9*" ) `
+	}
 	# | ? { ( $_.HealthState -eq "Uninitialized" ) }
 
 
- if ( $MM.Count -gt 0 )
+
+if ( ( $UnhealthyAgents.count -gt 0 ) -AND ( $MM.Count -gt 0 ) )
 	{
 	$CompareMM = compare-object -ReferenceObject $MM -DifferenceObject $UnhealthyAgents
+	}
+if (  $MM.Count -gt 0 )
+	{
+	$CompareMM = $MM
 	}
 
 
@@ -1235,28 +1239,28 @@ $UnHealthyAgents = ( get-scomagent | ? { $_.HealthState -ne "Success" }).Display
  
 # Check for repeatedly down agents
 
-$DownAgentsAlerts = get-SCOMAlert -ResolutionState (0..254) | ? { ($_.Name -eq "Health Service Heartbeat Failure") `
+$DownAgentsAlerts = $ADDSOpenAlerts | where { ($_.Name -eq "Health Service Heartbeat Failure") `
 	-OR ( $_.Name -eq "Failed to Connect to Computer" ) `
-	-OR ( $_.Name -eq "System Center Management Health Service Unloaded System Rule(s)") `
+	-OR ( $_.Name -like "System Center Management Health Service Unloaded System Rule*") `
 	-OR ( $_.Name -eq "System Center Management Health Service Unable to Process New Configuration" ) `
-	} | ? { ( $_.NetBiosComputerName -like "DC0*" ) `
-	-OR ( $_.MonitoringObjectDisplayName -like "DC0*" ) `
 	}
+
 
 $DownAgentsAlerts.Count
 #$DownAgentsAlerts.MonitoringObjectDisplayName | sort -uniq
 
 if ( $DownAgentsAlerts.Count -gt 0 )
 	{
-	$DownAgentsOpenTime = $DownAgentsAlerts | ? { $_.TimeRaised -gt $Time }
-	$DownAgentsClosedTime = $ClosedADDSAlert | ? { ($_.Name -eq "Health Service Heartbeat Failure") `
-	-OR ( $_.Name -eq "Failed to Connect to Computer" ) `
-	-OR ( $_.Name -eq "System Center Management Health Service Unloaded System Rule(s)") `
-	-OR ( $_.Name -eq "System Center Management Health Service Unable to Process New Configuration" ) `
-	} | ? { ( $_.NetBiosComputerName -like "DC0*" ) `
-	-OR ( $_.MonitoringObjectDisplayName -like "DC0*" ) `
-	} | ? { $_.TimeRaised -gt $Time }
+	# Open alerts since last report
+	$DownAgentsOpenTime = $DownAgentsAlerts | where { $_.TimeRaised -gt $Time }
 
+	# Closed alerts since last report
+	$DownAgentsClosedTime = $ClosedADDSAlert | where { ($_.Name -eq "Health Service Heartbeat Failure") `
+	-OR ( $_.Name -eq "Failed to Connect to Computer" ) `
+	-OR ( $_.Name -like "System Center Management Health Service Unloaded System Rule*") `
+	-OR ( $_.Name -eq "System Center Management Health Service Unable to Process New Configuration" ) `
+	} | where { $_.TimeRaised -gt $Time }
+	#
 	$DownAgentsOpenTime.MonitoringObjectDisplayName | sort -uniq
 	$DownAgentsClosedTime.MonitoringObjectDisplayName | sort -uniq
 	}
@@ -1265,20 +1269,37 @@ if ( $DownAgentsAlerts.Count -gt 0 )
 #Get SCOM agents in grey state
 # From blog 
 # https://www.powershellbros.com/get-list-unhealthy-scom-agents-grey-state-using-powershell/
+#
 $Agent = Get-SCOMClass -Name Microsoft.Windows.Computer
 $Objects = Get-SCOMMonitoringObject -class:$Agent | Where-Object {$_.IsAvailable -eq $false}
-  
-$Monitored = $Objects | ? { $_.AvailabilityLastModified -gt $Time } | sort -property DisplayName -uniq `
-	| ? { ( $_.DisplayName -like "DC0*" } | ? { $_.InMaintenanceMode -ne $True }
-	#| select AvailabilityLastModified,DisplayName -auto
+$FilteredObjects = $Objects | where { $_.InMaintenanceMode -ne $True } `
+	| where { ( $_.DisplayName -like "DC0*" ) `
+	-OR ( $_.DisplayName -like "*W4NHAAH7*" ) `
+	-OR ( $_.DisplayName -like "*W054AAA0*" ) `
+	-OR ( $_.DisplayName -like "*W054AAA1*" ) `
+	-OR ( $_.DisplayName -like "*W054AAA4*" ) `
+	-OR ( $_.DisplayName -like "*W054AAA7*" ) `
+	-OR ( $_.DisplayName -like "*W054AAC1*" ) `
+	-OR ( $_.DisplayName -like "*W054AADH*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH0*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH1*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH2*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH3*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH4*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH6*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH8*" ) `
+	-OR ( $_.DisplayName -like "*W054AAK9*" ) `
+	}
 
-$Monitored.DisplayName
+$Monitored = $FilteredObjects | where { $_.AvailabilityLastModified -gt $Time } | sort -property DisplayName -uniq
+# $Monitored.DisplayName
 
 # Display list of agents/servers and when modified
-$Monitored | select AvailabilityLastModified,DisplayName
+$FilterMonitored = $Monitored | select AvailabilityLastModified,DisplayName
 
-$NotMonitored = $Objects | ? { $_.AvailabilityLastModified -lt $Time } | sort -property DisplayName -uniq `
-	| ? { ( $_.DisplayName -like "DC0*" ) } | ? { $_.InMaintenanceMode -ne $True }
+
+$NotMonitored = $FilteredObjects | where { $_.AvailabilityLastModified -lt $Time } | sort -property DisplayName -uniq
+
 
 $RepeatDownAgents = @()
 $CurrentDownAgents = @()
@@ -1294,7 +1315,7 @@ if ( $DownAgentsOpenTime.Count -eq 0 )
 if ( $DownAgentsOpenTime.Count -gt 0 )
 	{
 	# Display list of agents/servers and when modified
-	$Monitored | select AvailabilityLastModified,DisplayName
+	# $FilterMonitored
 	If ( $Monitored.Count -gt 0 )
 		{
 		foreach ( $server in $Monitored.DisplayName)
@@ -1451,8 +1472,7 @@ $TotalAgentsFiltered = $TotalAgentIssues | ? { $_ -and $_.Trim() } | select-stri
 # Logical Disk free space alerts
 #===============================================
 
-$LDSTest = $ADDSServerAlerts | ? { $_.Name -eq "Logical disk Free space is low" } `
-	| ? { ( $_.NetBiosComputerName -like "DC0*" ) }
+$LDSTest = $ADDSServerAlerts | ? { $_.Name -eq "Logical disk Free space is low" }
 
 if ( $LDSTest.Count -gt 0 )
 	{
@@ -1477,8 +1497,7 @@ if ( $LDSTest.Count -gt 0 )
 		$LDSOpenDetails = $LDSTest | fl NetbiosComputerName,MonitoringObjectName,Parameters,Description | out-string
 		}
 
-	$ClosedLDSTest = $ClosedADDSAlert | ? { $_.Name -eq "Logical disk Free space is low" } `
-	| ? { ( $_.NetBiosComputerName -like "DC0*" ) }
+	$ClosedLDSTest = $ClosedADDSAlert | ? { $_.Name -eq "Logical disk Free space is low" }
 	$ClosedLDSTest.Count
 
 	if ( $ClosedLDSTest.Count -gt 0 )
@@ -1502,7 +1521,23 @@ $ADDSPKIexpired = $Instance | ? { ( $_.HealthState -ne "Success" ) -AND ( $_.Hea
 	# PKI certs can have Certstore, but it's not always searchable/display capable
 	# } | ? { $_.CertStore -like "Intermediate Certification*" `
 	# PKI certs don't use NetbiosComputerName, and PrincipalName does not output
-	} | ? { ( $_.Path -like "DC0*" ) } # | ft Path,Values -auto -wrap  # DisplayName
+	} | ? { ( $_.Path -like "DC0*" ) `
+	-OR ( $_.Path -like "*W4NHAAH7*" ) `
+	-OR ( $_.Path -like "*W054AAA0*" ) `
+	-OR ( $_.Path -like "*W054AAA1*" ) `
+	-OR ( $_.Path -like "*W054AAA4*" ) `
+	-OR ( $_.Path -like "*W054AAA7*" ) `
+	-OR ( $_.Path -like "*W054AAC1*" ) `
+	-OR ( $_.Path -like "*W054AADH*" ) `
+	-OR ( $_.Path -like "*W054AAH0*" ) `
+	-OR ( $_.Path -like "*W054AAH1*" ) `
+	-OR ( $_.Path -like "*W054AAH2*" ) `
+	-OR ( $_.Path -like "*W054AAH3*" ) `
+	-OR ( $_.Path -like "*W054AAH4*" ) `
+	-OR ( $_.Path -like "*W054AAH6*" ) `
+	-OR ( $_.Path -like "*W054AAH8*" ) `
+	-OR ( $_.Path -like "*W054AAK9*" ) `
+	} # | ft Path,Values -auto -wrap  # DisplayName
 
 $ADDSPKIexpired.count
 
@@ -1511,15 +1546,13 @@ $ADDSPKIexpired.count
 	#} | ? { $_.CertStore -like "Intermediate Certification*" `
 
 $ADDSIntermediate = $Instance | ? { ( $_.HealthState -ne "Success" ) -AND ( $_.HealthState -ne "Uninitialized" ) `
-	} | ? { $_.CertStore -like "Intermediate Certification*" `
-	} | ? { ( $_.Path -like "DC0*" ) }
-$ADDSIntermediate.Count
+	} | ? { $_.CertStore -like "Intermediate Certification*" }
+	# $ADDSIntermediate.Count
 
 
 $ADDSRootCerts = $Instance | ? { ( $_.HealthState -ne "Success" ) -AND ( $_.HealthState -ne "Uninitialized" ) `
-	} | ? { $_.CertStore -like "Root" `
-	} | ? { ( $_.Path -like "DC0*" ) }
-$ADDSRootCerts.Count
+	} | ? { $_.CertStore -like "Root" }
+	# $ADDSRootCerts.Count
 
 
 
@@ -1532,6 +1565,7 @@ if ( $ADDSServerAlerts.Count -eq 0 )
 	{
 	$Message = "ZERO alerts for ADDS Team Daily report for ($date)"
 	$ADDSTeamReport += "ZERO alerts for ADDS Team Daily report for ($date)"
+	$ADDSTeamReport += ""
 	$momapi.LogScriptEvent($ScriptName,$EventID,0,"$Message")
 	}
 
@@ -1578,49 +1612,8 @@ if ( $ADDSServerAlerts.Count -gt 0 )
  	$ADDSTeamReport += "# Total remaining alerts = $($ADDSRemaining.Count)"
 	$ADDSTeamReport += "#========================================================"
 	$ADDSTeamReport += ""
-	$ADDSTeamReport += "# Monitoring Health"
-	$ADDSTeamReport += "#========================================================"
-	$ADDSTeamReport += "# Servers in Maintenance mode = $($MM.Count)"
-	$ADDSTeamReport += "# Unhealthy Agents = $($UnHealthyAgents.Count)"
-	$ADDSTeamReport += "# Down agents = $(($DownAgentsOpenTime.MonitoringObjectDisplayName | sort -uniq).Count)"
-	$ADDSTeamReport += "# Repeatedly Down agents = $($NotMonitored.Count)"
-	$ADDSTeamReport += "# Other Agent failures since last report = $($Monitored.Count)"
-	$ADDSTeamReport += "#========================================================"
-	$ADDSTeamReport += ""
-	$ADDSTeamReport += "# CLOSED alerts"
-	$ADDSTeamReport += "#========================================================"
- 	$ADDSTeamReport += "# Server performance alerts = $($ClosedHighAlerts.Count)"
-	$ADDSTeamReport += "# Logical Disk full alerts = $($ClosedLDSTest.Count)"
- 	$ADDSTeamReport += "# Failed to install MECM application packages = $($ClosedFailedInstallAlerts.Count)"
-	if ( $ClosedProVAlerts.Count -gt 0 )
-		{
-		$ADDSTeamReport += "# Tangible ProV alerts = $($ClosedProVAlerts.Count)"
-		}
-	$ADDSTeamReport += "# DFS-R alerts = $($ClosedDFSRAlerts.Count)"
- 	$ADDSTeamReport += "# DNS alerts = $($ClosedDNSAlerts.Count)"
- 	$ADDSTeamReport += "# DHCP alerts = $($ClosedDHCPAlerts.Count)"
- 	$ADDSTeamReport += "# Group Policy alerts = $($ClosedGPOAlerts.Count)"
-	$ADDSTeamReport += "#========================================================"
- 	$ADDSTeamReport += "# Servers Pending Restart = $($ClosedPendingRestart.Count)"
- 	$ADDSTeamReport += "# Servers NOT rebooted= $($ClosedNotRebooted.Count)"
- 	$ADDSTeamReport += "# Servers NOT patched = $($ClosedNotPatched.Count)"
-	$ADDSTeamReport += "#========================================================"
-	$ADDSTeamReport += ""
-	$ADDSTeamReport += ""
-
-	# Add logic for agents monitored/down/maintenance mode
-	if ( $Compare -eq 0 )
-		{
-		$ADDSTeamReport += "ZERO Agents in maintenance mode as of report run"
-		$ADDSTeamReport += ""
-		}
-	if ( $Compare -gt 0 )
-		{
-		$ADDSTeamReport += "# Agents in maintenance mode"
-		$ADDSTeamReport += "#======================================="
-		$ADDSTeamReport += $Compare
-		$ADDSTeamReport += ""
-		}
+	$ADDSTeamReport += "# Monitoring Health details"
+	$ADDSTeamReport += "#=========================="
 
 
 	if ( $TotalAgentsFiltered.Count -eq 0 )
@@ -1986,7 +1979,7 @@ $bag
 #Log an event for script ending and total execution time.
 $EndTime = Get-Date
 $ScriptTime = ($EndTime - $StartTime).TotalSeconds
-$momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Runtime: ($ScriptTime) seconds.")
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"Proactive Microsoft Windows Server Addendum AD 2016 Reports Script Completed. `n Script Runtime: ($ScriptTime) seconds.")
 #=================================================================================
 # End of script
                 </ScriptBody>
@@ -2027,7 +2020,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
                 </Scheduler>
               </DataSource>
               <ProbeAction ID="PA" TypeID="Windows!Microsoft.Windows.PowerShellPropertyBagTriggerOnlyProbe">
-                <ScriptName>Proactive.DailyTasks.ADDSAlerts.GroupPolicyReport.Script.Alert.DataSource.v1045.ps1</ScriptName>
+                <ScriptName>Proactive.DailyTasks.ADDSAlerts.GroupPolicyReport.Script.Alert.DataSource.v1047.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
 #  Script to gather ADDS GroupPolicyReport alerts and close via on demand task
@@ -2041,7 +2034,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
 #=================================================================================
 # Assign script name variable for use in event logging.
 # ScriptName should be the same as the ID of the module that the script is contained in
-$ScriptName = "Proactive.DailyTasks.ADDSAlerts.GroupPolicyReport.Script.Alert.DataSource.v1045.ps1"
+$ScriptName = "Proactive.DailyTasks.ADDSAlerts.GroupPolicyReport.Script.Alert.DataSource.v1047.ps1"
 $EventID = "552"
 #=================================================================================
 
@@ -2055,7 +2048,7 @@ $whoami = whoami
 # Load MOMScript API
 $momapi = New-Object -comObject MOM.ScriptAPI
 #Log script event that we are starting task
-$momapi.LogScriptEvent($ScriptName,$EventID,0,"Script is starting.  Running as ($whoami).")
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"Proactive DailyTasks ADDSAlerts GroupPolicy Report Script is starting.  Running as ($whoami).")
 #=================================================================================
 
 
@@ -2193,7 +2186,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"Proactive DailyTasks ADDS Group P
 #Log an event for script ending and total execution time.
 $EndTime = Get-Date
 $ScriptTime = ($EndTime - $StartTime).TotalSeconds
-$momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Runtime: ($ScriptTime) seconds.")
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"Proactive DailyTasks ADDSAlerts GroupPolicy Report Script Completed. `n Script Runtime: ($ScriptTime) seconds.")
 #=================================================================================
 # End of script
                 </ScriptBody>
@@ -2234,7 +2227,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
                 </Scheduler>
               </DataSource>
               <ProbeAction ID="PA" TypeID="Windows!Microsoft.Windows.PowerShellPropertyBagTriggerOnlyProbe">
-                <ScriptName>Proactive.DailyTasks.ADDS.ComponentAlert.Script.DataSource.v1045.ps1</ScriptName>
+                <ScriptName>Proactive.DailyTasks.ADDS.ComponentAlert.Script.DataSource.v1047.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
 #  Script to gather ADDS Component alert consolidation
@@ -2248,7 +2241,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
 #=================================================================================
 # Assign script name variable for use in event logging.
 # ScriptName should be the same as the ID of the module that the script is contained in
-$ScriptName = "Proactive.DailyTasks.ADDS.ComponentAlert.Script.DataSource.v1045.ps1"
+$ScriptName = "Proactive.DailyTasks.ADDS.ComponentAlert.Script.DataSource.v1047.ps1"
 $EventID = "550"
 #=================================================================================
 
@@ -2262,7 +2255,7 @@ $whoami = whoami
 # Load MOMScript API
 $momapi = New-Object -comObject MOM.ScriptAPI
 #Log script event that we are starting task
-$momapi.LogScriptEvent($ScriptName,$EventID,0,"Script is starting. `n Running as ($whoami).")
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"Proactive DailyTasks ADDS ComponentAlert DS Script is starting. `n Running as ($whoami).")
 #=================================================================================
 
 
@@ -2308,7 +2301,8 @@ if ( $ADDSPacks.Count -gt 0 )
 	$ADMgmtPackArray += "Active Directory Domain Services for Microsoft Windows Server 2012 R2 (Monitoring)"
 	$ADMgmtPackArray += "Active Directory Domain Services for Microsoft Windows Server 2012 (Monitoring)"
 	$ADMgmtPackArray += "Active Directory Server 2008 and above (Monitoring)"
-	
+
+	$ADMgmtPackArray += "File Services Management Pack for Windows Server 2016 and above"
 	$ADMgmtPackArray += "Microsoft Windows Server 2016 and 1709+ DNS Monitoring"
 	$ADMgmtPackArray += "Microsoft Windows Server DNS Monitoring"
 
@@ -2319,6 +2313,8 @@ if ( $ADDSPacks.Count -gt 0 )
 	$ADMgmtPackArray += "Windows Server 2016 and above Operating Systems (Monitoring)"
 	$ADMgmtPackArray += "Windows Server 2012 R2 Operating System (Monitoring)"
 	$ADMgmtPackArray += "Windows Server 2012 Operating System (Monitoring)"
+
+	$ADMgmtPackArray += "Microsoft Windows Server DHCP 2016 and above"
 
 	$ADMgmtPackArray += "System Center Core Monitoring"
 	}
@@ -2397,7 +2393,7 @@ $ADDSAlerts = get-scomalert -ResolutionState (0..254) | ? { ( $_.Name -like "AD 
 	-OR ( $_.Name -eq "No input provider to sync time" ) `
 	-OR ( $_.Name -eq "PAC Verification Failure" ) `
 	-OR ( $_.Name -eq "Policy Update Failure" ) `
-	-OR ( $_.Name -eq "System Center Management Health Service Unloaded System Rule(s)" ) `
+	-OR ( $_.Name -like "System Center Management Health Service Unloaded System Rule*" ) `
 	-OR ( $_.Name -eq "The account identifier pool for this domain controller cannot be updated" ) `
 	-OR ( $_.Name -eq "The computer name cannot be mapped to an object in Active Directory - this may result in authentication failures" ) `
 	-OR ( $_.Name -eq "The DC was unable to obtain the next account-identifier" ) `
@@ -2477,7 +2473,7 @@ $ClosedADDSAlerts = get-scomalert -ResolutionState 255 | ? { ( $_.Name -like "AD
 	-OR ( $_.Name -eq "No input provider to sync time" ) `
 	-OR ( $_.Name -eq "PAC Verification Failure" ) `
 	-OR ( $_.Name -eq "Policy Update Failure" ) `
-	-OR ( $_.Name -eq "System Center Management Health Service Unloaded System Rule(s)" ) `
+	-OR ( $_.Name -like "System Center Management Health Service Unloaded System Rule*" ) `
 	-OR ( $_.Name -eq "The account identifier pool for this domain controller cannot be updated" ) `
 	-OR ( $_.Name -eq "The computer name cannot be mapped to an object in Active Directory - this may result in authentication failures" ) `
 	-OR ( $_.Name -eq "The DC was unable to obtain the next account-identifier" ) `
@@ -2528,14 +2524,14 @@ $TotalClosedAlerts.Count
 # Parse unique server names to count open alerts
 # $OpenADDSAlerts $OpenSCOMCoreRuleAlerts
 #=============================================================================================
-$UniqADDSAlerts = $TotalOpenAlerts | ? { ( $_.MonitoringObjectDisplayName -match "\b\w{10}(A1|A9)" ) `
-	-OR ( $_.NetbiosComputerName -match "\b\w{10}(A1|A9)" ) `
+$UniqADDSAlerts = $TotalOpenAlerts | ? { ( $_.MonitoringObjectDisplayName -match "\b\w{10}(A0|A1|A4|A7|A9|C1|DH|H0|H1|H2|H3|H4|H6|K9)" ) `
+	-OR ( $_.NetbiosComputerName -match "\b\w{10}(A0|A1|A4|A7|A9|C1|DH|H0|H1|H2|H3|H4|H6|K9)" ) `
 	}
-$UniqOpenADDSAlerts = $TotalOpenAlerts | ? { ( $_.MonitoringObjectDisplayName -match "\b\w{10}(A1|A9)" ) `
-	-OR ( $_.NetbiosComputerName -match "\b\w{10}(A1|A9)" ) `
+$UniqOpenADDSAlerts = $TotalOpenAlerts | ? { ( $_.MonitoringObjectDisplayName -match "\b\w{10}(A0|A1|A4|A7|A9|C1|DH|H0|H1|H2|H3|H4|H6|K9)" ) `
+	-OR ( $_.NetbiosComputerName -match "\b\w{10}(A0|A1|A4|A7|A9|C1|DH|H0|H1|H2|H3|H4|H6|K9)" ) `
 	}
-$UniqClosedADDSAlerts += $TotalClosedAlerts | ? { ( $_.MonitoringObjectDisplayName -match "\b\w{10}(A1|A9)" ) `
-	-OR ( $_.NetbiosComputerName -match "\b\w{10}(A1|A9)" ) `
+$UniqClosedADDSAlerts += $TotalClosedAlerts | ? { ( $_.MonitoringObjectDisplayName -match "\b\w{10}(A0|A1|A4|A7|A9|C1|DH|H0|H1|H2|H3|H4|H6|K9)" ) `
+	-OR ( $_.NetbiosComputerName -match "\b\w{10}(A0|A1|A4|A7|A9|C1|DH|H0|H1|H2|H3|H4|H6|K9)" ) `
 	}
 
 $UniqOpenADDSAlerts.Count
@@ -2694,7 +2690,7 @@ $bag
 #Log an event for script ending and total execution time.
 $EndTime = Get-Date
 $ScriptTime = ($EndTime - $StartTime).TotalSeconds
-$momapi.LogScriptEvent($ScriptName,$EventID,0,"Script Completed.  Script Runtime: ($ScriptTime) seconds.")
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"Proactive DailyTasks ADDS ComponentAlert DS Script Completed.  Script Runtime: ($ScriptTime) seconds.")
 #=================================================================================
 # End of script
                 </ScriptBody>
@@ -2710,7 +2706,6 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"Script Completed.  Script Runtime
         </ModuleImplementation>
         <OutputType>System!System.PropertyBagData</OutputType>
       </DataSourceModuleType>
-
       <WriteActionModuleType ID="Proactive.DailyTasks.ADDSAlerts.Close.Script.Alert.WA" Accessibility="Internal" Batching="false">
         <Configuration>
           <xsd:element minOccurs="1" name="TimeoutSeconds" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
@@ -2722,7 +2717,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"Script Completed.  Script Runtime
           <Composite>
             <MemberModules>
               <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
-                <ScriptName>Proactive.DailyTasks.ADDSAlerts.Close.Script.Alert.WA.v1045.ps1</ScriptName>
+                <ScriptName>Proactive.DailyTasks.ADDSAlerts.Close.Script.Alert.WA.v1047.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
 #  Script to gather ADDS alerts and close via on demand task
@@ -2736,7 +2731,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"Script Completed.  Script Runtime
 #=================================================================================
 # Assign script name variable for use in event logging.
 # ScriptName should be the same as the ID of the module that the script is contained in
-$ScriptName = "Proactive.DailyTasks.ADDSAlerts.Close.Script.Datasource.v1045.ps1"
+$ScriptName = "Proactive.DailyTasks.ADDSAlerts.Close.Script.Datasource.v1047.ps1"
 $EventID = "550"
 #=================================================================================
 
@@ -2750,7 +2745,7 @@ $whoami = whoami
 # Load MOMScript API
 $momapi = New-Object -comObject MOM.ScriptAPI
 #Log script event that we are starting task
-$momapi.LogScriptEvent($ScriptName,$EventID,0,"Script is starting. `n Running as ($whoami).")
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"Proactive DailyTasks ADDSAlerts Close Script is starting. `n Running as ($whoami).")
 #=================================================================================
 
 
@@ -2816,7 +2811,7 @@ if ( $SCOMCoreReportAlerts.Count -eq 0 )
 	$Message = "ZERO alerts for ADDS alert closure workflow for ($date)"
 	$momapi.LogScriptEvent($ScriptName,$EventID,0,"$Message")
 	}
-	
+
 if ( $SCOMCoreReportAlerts.Count -gt 0 )
 	{
 	#
@@ -2836,7 +2831,7 @@ if ( $SCOMCoreReportAlerts.Count -gt 0 )
 	$ADDSComponentMessage += "#========================================="
 	$ADDSComponentMessage += ""
 	}
-	
+
 $ADDSComponentMessage
 
 $ADDSComponentMessage = $ADDSComponentMessage | out-string
@@ -2855,6 +2850,7 @@ $bag.AddValue('Summary',$ADDSComponentMessage)
 
 # Return all bags
 $bag
+
 
 
 #=================================================================================
@@ -2920,7 +2916,7 @@ if ( $SCOMCoreReportAlerts.Count -gt 0 )
 						$ActiveMonitor.ID
 						write-host " Resetting Health State on '" + $ActiveMonitor.FullName + "'" 
 						write-host ""
-						$ActiveMonitor.ResetMonitoringState($ActiveMonitor)
+						$ActiveMonitor.ResetMonitoringState($ActiveMonitor.ID)
 						}
 					}
 				}
@@ -2961,7 +2957,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"Proactive DailyTasks ADDS rule re
 #Log an event for script ending and total execution time.
 $EndTime = Get-Date
 $ScriptTime = ($EndTime - $StartTime).TotalSeconds
-$momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Runtime: ($ScriptTime) seconds.")
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"Proactive DailyTasks ADDSAlerts Close Script Script Completed. `n Script Runtime: ($ScriptTime) seconds.")
 #=================================================================================
 # End of script
                 </ScriptBody>
@@ -2987,7 +2983,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
           <Composite>
             <MemberModules>
               <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
-                <ScriptName>Proactive.DailyTasks.ADDSAlerts.SummaryReport.Script.Alert.WA.v1045.ps1</ScriptName>
+                <ScriptName>Proactive.DailyTasks.ADDSAlerts.SummaryReport.Script.Alert.WA.v1047.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
 #  Script to gather ADDS alerts and close via on demand task
@@ -3001,7 +2997,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
 #=================================================================================
 # Assign script name variable for use in event logging.
 # ScriptName should be the same as the ID of the module that the script is contained in
-$ScriptName = "Proactive.DailyTasks.ADDSAlerts.SummaryReport.Script.Alert.WA.v1045.ps1"
+$ScriptName = "Proactive.DailyTasks.ADDSAlerts.SummaryReport.Script.Alert.WA.v1047.ps1"
 $EventID = "553"
 #=================================================================================
 
@@ -3015,7 +3011,7 @@ $whoami = whoami
 # Load MOMScript API
 $momapi = New-Object -comObject MOM.ScriptAPI
 #Log script event that we are starting task
-$momapi.LogScriptEvent($ScriptName,$EventID,0,"Script is starting. `n Running as ($whoami).")
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"Proactive DailyTasks ADDSAlerts SummaryReport Script is starting. `n Running as ($whoami).")
 #=================================================================================
 
 
@@ -3393,7 +3389,7 @@ $bag
 #Log an event for script ending and total execution time.
 $EndTime = Get-Date
 $ScriptTime = ($EndTime - $StartTime).TotalSeconds
-$momapi.LogScriptEvent($ScriptName,$EventID,0,"Script Completed. `n Script Runtime: ($ScriptTime) seconds.")
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"Proactive DailyTasks ADDSAlerts SummaryReport Script Completed. `n Script Runtime: ($ScriptTime) seconds.")
 #=================================================================================
 # End of script
                 </ScriptBody>
@@ -3419,7 +3415,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"Script Completed. `n Script Runti
           <Composite>
             <MemberModules>
               <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
-                <ScriptName>Proactive.Microsoft.Windows.Server.Addendum.AD.2016.Reports.WA.v1045.ps1</ScriptName>
+                <ScriptName>Proactive.Microsoft.Windows.Server.Addendum.AD.2016.Reports.WA.v1047.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
 #  Script to gather ADDS alerts for team daily report
@@ -3433,7 +3429,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"Script Completed. `n Script Runti
 #=================================================================================
 # Assign script name variable for use in event logging.
 # ScriptName should be the same as the ID of the module that the script is contained in
-$ScriptName = "Proactive.Microsoft.Windows.Server.Addendum.AD.2016.Reports.WA.v1045.ps1"
+$ScriptName = "Proactive.Microsoft.Windows.Server.Addendum.AD.2016.Reports.WA.v1047.ps1"
 $EventID = "564"
 #=================================================================================
 
@@ -3447,7 +3443,7 @@ $whoami = whoami
 # Load MOMScript API
 $momapi = New-Object -comObject MOM.ScriptAPI
 #Log script event that we are starting task
-$momapi.LogScriptEvent($ScriptName,$EventID,0,"Script is starting. `n Running as ($whoami).")
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"Proactive Microsoft Windows Server Addendum AD 2016 Reports Script is starting. `n Running as ($whoami).")
 #=================================================================================
 
 
@@ -3479,7 +3475,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"Gather ADDS Alerts for date ($dat
 
 # Gather ADDS alerts
 # Monitors then rules
-$ADDSReportAlerts = get-scomalert -ResolutionState (0..254) | ? { ( $_.Name -eq "Available Megabytes of Memory is too low" ) `
+$ADDSReportAlerts = get-scomalert | ? { ( $_.Name -eq "Available Megabytes of Memory is too low" ) `
 	-OR ( $_.Name -eq "Certificate lifespan alert" ) `
 	-OR ( $_.Name -eq "Component stopped alert" ) `
 	-OR ( $_.Name -like "DFS-R: *" ) `
@@ -3505,7 +3501,7 @@ $ADDSReportAlerts = get-scomalert -ResolutionState (0..254) | ? { ( $_.Name -eq 
 	-OR ( $_.Name -eq "Max Concurrent API Reached alert" ) `
 	-OR ( $_.Name -eq "Memory Pages Per Second is too High." ) `
 	-OR ( $_.Name -eq "Network Adapter Disconnected" ) `
-	-OR ( $_.Name -like "NG Tangible ProV ProVService Service*" ) `
+	-OR ( $_.Name -like "Tangible ProV ProVService Service*" ) `
 	-OR ( $_.Name -eq "NTFS - File System Corrupt" ) `
 	-OR ( $_.Name -eq "NTFS reported the logical disk is in error or corrupt." ) `
 	-OR ( $_.Name -eq "Percentage of Committed Memory in Use is too high" ) `
@@ -3535,104 +3531,71 @@ $ADDSReportAlerts = get-scomalert -ResolutionState (0..254) | ? { ( $_.Name -eq 
 	-OR ( $_.Name -eq "The Group Policy Update health monitor has failed." ) `
 	-OR ( $_.Name -eq "Group policy processing aborted - cannot determine site" ) `
 	-OR ( $_.Name -eq "Policy Update Failure" ) `
-	}  | ? { ( $_.TimeRaised -ge $Time ) }
+	}  # | ? { ( $_.TimeRaised -ge $Time ) }
 
 $ADDSReportAlerts.Count
 
 
 # Open ADDS server alerts
 $ADDSServerAlerts = $ADDSReportAlerts | ? { ( $_.NetBiosComputerName -like "DC0*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W4NHAAH7*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AAA0*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AAA1*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AAA4*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AAA7*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AAC1*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AADH*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AAH0*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AAH1*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AAH2*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AAH3*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AAH4*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AAH6*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AAH8*" ) `
+	-OR ( $_.NetBiosComputerName -like "*W054AAK9*" ) `
 	-OR ( $_.MonitoringObjectDisplayName -like "DC0*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W4NHAAH7*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AAA0*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AAA1*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AAA4*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AAA7*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AAC1*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AADH*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AAH0*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AAH1*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AAH2*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AAH3*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AAH4*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AAH6*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AAH8*" ) `
+	-OR ( $_.MonitoringObjectDisplayName -like "*W054AAK9*" ) `
 	}
 
-#$ADDSServerAlerts 
-$ADDSServerAlerts.Count
+# $ADDSServerAlerts 
+# $ADDSServerAlerts.Count
 
 
 # Open ADDS server alerts
-$ADDSOpenAlerts = $ADDSServerAlerts
-$ADDSOpenAlerts.Count
+$ADDSOpenAlerts = $ADDSServerAlerts | where { $_.ResolutionState -ne "255" }
+# $ADDSOpenAlerts.Count
 
 # Open ADDS server alerts since last report
-$ADDSAlertsSinceReport = $ADDSServerAlerts | ? { ( $_.TimeRaised -ge $Time ) }
-$ADDSAlertsSinceReport.Count
+$ADDSAlertsSinceReport = $ADDSOpenAlerts | where { ( $_.TimeRaised -ge $Time ) }
+# $ADDSAlertsSinceReport.Count
+
 
 # Closed ADDS server alerts
-$ClosedADDSAlerts = get-SCOMAlert -ResolutionState 255 | ? { ( $_.Name -eq "Available Megabytes of Memory is too low" ) `
-	-OR ( $_.Name -eq "Certificate lifespan alert" ) `
-	-OR ( $_.Name -eq "Component stopped alert" ) `
-	-OR ( $_.Name -like "DFS-R: *" ) `
-	-OR ( $_.Name -like "DHCP*" ) `
-	-OR ( $_.Name -eq "DHCP Service Stopped" ) `
-	-OR ( $_.Name -eq "Disk read latency  is too high" ) `
-	-OR ( $_.Name -eq "Disk write latency  is too high" ) `
-	-OR ( $_.Name -eq "DNS Client Service Stopped" ) `
-	-OR ( $_.Name -eq "Event log is full" ) `
-	-OR ( $_.Name -eq "Fail to access site system alert" ) `
-	-OR ( $_.Name -eq "Failed to Connect to Computer" ) `
-	-OR ( $_.Name -eq "Failed to install application on client" ) `
-	-OR ( $_.Name -eq "File Dispatch Manager Not Connecting to Site Server" ) `
-	-OR ( $_.Name -eq "Free System Page Table Entries is too Low." ) `
-	-OR ( $_.Name -eq "Health Service Heartbeat Failure" ) `
-	-OR ( $_.Name -eq "IP address conflict" ) `
-	-OR ( $_.Name -eq "LDM - Can't Read Disk" ) `
-	-OR ( $_.Name -eq "Logical Disk Fragmentation Level is high" ) `
-	-OR ( $_.Name -eq "Logical Disk Free Space is low" ) `
-	-OR ( $_.Name -eq "Logical disk idle time percentage is too low" ) `
-	-OR ( $_.Name -eq "Logical disk current queue length is too high" ) `
-	-OR ( $_.Name -eq "Logical disk transfer (reads and writes) latency  is too high" ) `
-	-OR ( $_.Name -eq "Max Concurrent API Reached alert" ) `
-	-OR ( $_.Name -eq "Memory Pages Per Second is too High." ) `
-	-OR ( $_.Name -eq "Network Adapter Disconnected" ) `
-	-OR ( $_.Name -like "NG Tangible ProV ProVService Service*" ) `
-	-OR ( $_.Name -eq "NTFS - File System Corrupt" ) `
-	-OR ( $_.Name -eq "NTFS reported the logical disk is in error or corrupt." ) `
-	-OR ( $_.Name -eq "Percentage of Committed Memory in Use is too high" ) `
-	-OR ( $_.Name -like "PROACTIVE*" ) `
-	-OR ( $_.Name -eq "Service entered unpredictable state" ) `
-	-OR ( $_.Name -eq "Service is misconfigured" ) `
-	-OR ( $_.Name -eq "Service or driver failed to start" ) `
-	-OR ( $_.Name -eq "Server Service is misconfigured" ) `
-	-OR ( $_.Name -eq "Service terminated unexpectedly" ) `
-	-OR ( $_.Name -eq "Share configuration is invalid" ) `
-	-OR ( $_.Name -eq "Software update installation failed" ) `
-	-OR ( $_.Name -eq "TCP/IP NetBIOS Service Stopped" ) `
-	-OR ( $_.Name -eq "The LDAP Bind Time health monitor has exceeded one or more thresholds." ) `
-	-OR ( $_.Name -eq "Too many requests for performance counter data have timed out" ) `
-	-OR ( $_.Name -eq "Total CPU Utilization Percentage is too high" ) `
-	-OR ( $_.Name -eq "Total DPC Time Percentage is too high" ) `
-	-OR ( $_.Name -eq "Total Percentage Interrupt Time is too high" ) `
-	-OR ( $_.Name -eq "Used total bandwidth is over threshold" ) `
-	-OR ( $_.Name -eq "Used write bandwidth is over threshold" ) `
-	-OR ( $_.Name -like "Windows DNS *" ) `
-	-OR ( $_.Name -eq "Windows Event Log Service Stopped" ) `
-	-OR ( $_.Name -eq "Windows Firewall Service Stopped" ) `
-	-OR ( $_.Name -eq "Windows Remote Management Service Stopped" ) `
-	-OR ( $_.Name -eq "Windows Required Activation" ) `
-	-OR ( $_.Name -eq "Windows Server Service Stopped" ) `
-	-OR ( $_.Name -eq "Windows Storport Miniport Driver has timed out a request" ) `
-	-OR ( $_.Name -eq "The Group Policy Update health monitor has failed." ) `
-	-OR ( $_.Name -eq "Group policy processing aborted - cannot determine site" ) `
-	-OR ( $_.Name -eq "Policy Update Failure" ) `
-	}
-$ClosedADDSAlerts.Count
+$ADDSClosedAlerts = $ADDSServerAlerts | where { $_.ResolutionState -eq "255" }
+# $ADDSClosedAlerts.Count
+
+# Closed ADDS server alerts since last report
+$ADDSAlertsSinceReport = $ADDSClosedAlerts | where { ( $_.TimeRaised -ge $Time ) }
+# $ADDSAlertsSinceReport.Count
+
+$ClosedADDSAlerts = $ADDSClosedAlerts 
+# $ClosedADDSAlerts.Count
 
 
-# Open ADDS server alerts
-$ADDSServerAlerts = $ADDSReportAlerts | ? { ( $_.NetBiosComputerName -like "DC0*" ) `
-	-OR ( $_.MonitoringObjectDisplayName -like "DC0*" ) `
-	}
-
-#$ADDSServerAlerts 
-$ADDSServerAlerts.Count
-
-# Open ADDS server alerts
-$ADDSOpenAlerts = $ADDSServerAlerts
-$ADDSOpenAlerts.Count
-
-# Open ADDS server alerts since last report
-$ADDSAlertsSinceReport = $ADDSServerAlerts | ? { ( $_.TimeRaised -ge $Time ) }
-$ADDSAlertsSinceReport.Count
 
 
 #
@@ -3679,7 +3642,7 @@ $ClosedNotPatched = $ClosedADDSAlert | ? { ( $_.Name -eq "PROACTIVE - Server NOT
 
 
 # Tangible ProV/DODVisitor DC service
-$ProVAlerts = $ADDSServerAlerts | ? { ( $_.Name -like "NG Tangible ProV*" ) }
+$ProVAlerts = $ADDSServerAlerts | ? { ( $_.Name -like "Tangible ProV*" ) }
 
 #$ProVAlerts.Count
 $ProVAlerts | select NetBiosComputerName,TimeRaised
@@ -3687,7 +3650,7 @@ $ProVAlerts | select NetBiosComputerName,TimeRaised
 $OpenProVAlerts = $ProVAlerts
 #$OpenProVAlerts.Count
 
-$ClosedProVAlerts = $ClosedADDSAlert | ? { ( $_.Name -like "NG Tangible ProV*" ) }
+$ClosedProVAlerts = $ClosedADDSAlert | ? { ( $_.Name -like "Tangible ProV*" ) }
 #$ClosedProVAlerts.Count
 
 
@@ -3792,7 +3755,7 @@ $ADDSRemaining = @()
 $ADDSRemaining = $ADDSOpenAlerts | ? { ( $_.Name -notlike "PROACTIVE - Server*" ) }`
 	| ? { ( $_.Name -notlike "Logical disk Free space is low*" ) } `
 	| ? { ( $_.Name -notlike "Certificate lifespan alert*" ) } `
-	| ? { ( $_.Name -notlike "NG Tangible ProV*" ) } `
+	| ? { ( $_.Name -notlike "Tangible ProV*" ) } `
 	| ? { ( $_.Name -notlike "DFS-R: *" ) } `
 	| ? { ( $_.Name -notlike "Windows DNS *" ) } `
 	| ? { ( $_.Name -notlike "DHCP*" ) } `
@@ -3800,7 +3763,7 @@ $ADDSRemaining = $ADDSOpenAlerts | ? { ( $_.Name -notlike "PROACTIVE - Server*" 
 	| ? { ( $_.Name -ne "Failed to install application on client" ) } `
 	| ? { ( $_.Name -ne "Health Service Heartbeat Failure" ) } `
 	| ? { ( $_.Name -ne "Percentage of Committed Memory in Use is too high" ) } `
-	| ? { ( $_.Name -ne "NG Tangible ProV ProVService Service*" ) } `
+	| ? { ( $_.Name -ne "Tangible ProV ProVService Service*" ) } `
 	| ? { ( $_.Name -ne "Total CPU Utilization Percentage is too high" ) } `
 	| ? { ( $_.Name -ne "VMware (High): Virtual Machine CPU Usage is High" ) } `
 	| ? { ( $_.Name -ne "The LSASS process has exceeded the processor utilization threshold over multiple samples." ) } `
@@ -3825,19 +3788,56 @@ $ADDSFormattedRemaining = $ADDSRemaining | select NetbiosComputerName,TimeRaised
   $instance = ( $Class | ? { $_.Name -like "Microsoft.Windows.Computer" }  |Get-SCOMClassInstance )
 
   $MM = ($Instance | ? { $_.InMaintenanceMode -eq "True" }).DisplayName `
-	| ? { ( $_.DisplayName -like "DC0*" ) }
+	| ? { ( $_.DisplayName -like "DC0*" ) `
+	-OR ( $_.DisplayName -like "*W4NHAAH7*" ) `
+	-OR ( $_.DisplayName -like "*W054AAA0*" ) `
+	-OR ( $_.DisplayName -like "*W054AAA1*" ) `
+	-OR ( $_.DisplayName -like "*W054AAA4*" ) `
+	-OR ( $_.DisplayName -like "*W054AAA7*" ) `
+	-OR ( $_.DisplayName -like "*W054AAC1*" ) `
+	-OR ( $_.DisplayName -like "*W054AADH*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH0*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH1*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH2*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH3*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH4*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH6*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH8*" ) `
+	-OR ( $_.DisplayName -like "*W054AAK9*" ) `
+	}
 	write-host "MM Maintenance mode Agents `n" ; $Unhealthy.InputObject
     $MaintM = $MM | sort | out-string
 
 #   $UnHealthyAgents = get-scomagent
 $UnHealthyAgents = ( get-scomagent | ? { $_.HealthState -ne "Success" }).DisplayName `
-	| ? { ( $_.DisplayName -like "DC0*" ) }
+	| ? { ( $_.DisplayName -like "DC0*" ) `
+	-OR ( $_.DisplayName -like "*W4NHAAH7*" ) `
+	-OR ( $_.DisplayName -like "*W054AAA0*" ) `
+	-OR ( $_.DisplayName -like "*W054AAA1*" ) `
+	-OR ( $_.DisplayName -like "*W054AAA4*" ) `
+	-OR ( $_.DisplayName -like "*W054AAA7*" ) `
+	-OR ( $_.DisplayName -like "*W054AAC1*" ) `
+	-OR ( $_.DisplayName -like "*W054AADH*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH0*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH1*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH2*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH3*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH4*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH6*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH8*" ) `
+	-OR ( $_.DisplayName -like "*W054AAK9*" ) `
+	}
 	# | ? { ( $_.HealthState -eq "Uninitialized" ) }
 
 
- if ( $MM.Count -gt 0 )
+
+if ( ( $UnhealthyAgents.count -gt 0 ) -AND ( $MM.Count -gt 0 ) )
 	{
 	$CompareMM = compare-object -ReferenceObject $MM -DifferenceObject $UnhealthyAgents
+	}
+if (  $MM.Count -gt 0 )
+	{
+	$CompareMM = $MM
 	}
 
 
@@ -3856,28 +3856,28 @@ $UnHealthyAgents = ( get-scomagent | ? { $_.HealthState -ne "Success" }).Display
  
 # Check for repeatedly down agents
 
-$DownAgentsAlerts = get-SCOMAlert -ResolutionState (0..254) | ? { ($_.Name -eq "Health Service Heartbeat Failure") `
+$DownAgentsAlerts = $ADDSOpenAlerts | where { ($_.Name -eq "Health Service Heartbeat Failure") `
 	-OR ( $_.Name -eq "Failed to Connect to Computer" ) `
-	-OR ( $_.Name -eq "System Center Management Health Service Unloaded System Rule(s)") `
+	-OR ( $_.Name -like "System Center Management Health Service Unloaded System Rule*") `
 	-OR ( $_.Name -eq "System Center Management Health Service Unable to Process New Configuration" ) `
-	} | ? { ( $_.NetBiosComputerName -like "DC0*" ) `
-	-OR ( $_.MonitoringObjectDisplayName -like "DC0*" ) `
 	}
+
 
 $DownAgentsAlerts.Count
 #$DownAgentsAlerts.MonitoringObjectDisplayName | sort -uniq
 
 if ( $DownAgentsAlerts.Count -gt 0 )
 	{
-	$DownAgentsOpenTime = $DownAgentsAlerts | ? { $_.TimeRaised -gt $Time }
-	$DownAgentsClosedTime = $ClosedADDSAlert | ? { ($_.Name -eq "Health Service Heartbeat Failure") `
-	-OR ( $_.Name -eq "Failed to Connect to Computer" ) `
-	-OR ( $_.Name -eq "System Center Management Health Service Unloaded System Rule(s)") `
-	-OR ( $_.Name -eq "System Center Management Health Service Unable to Process New Configuration" ) `
-	} | ? { ( $_.NetBiosComputerName -like "DC0*" ) `
-	-OR ( $_.MonitoringObjectDisplayName -like "DC0*" ) `
-	} | ? { $_.TimeRaised -gt $Time }
+	# Open alerts since last report
+	$DownAgentsOpenTime = $DownAgentsAlerts | where { $_.TimeRaised -gt $Time }
 
+	# Closed alerts since last report
+	$DownAgentsClosedTime = $ClosedADDSAlert | where { ($_.Name -eq "Health Service Heartbeat Failure") `
+	-OR ( $_.Name -eq "Failed to Connect to Computer" ) `
+	-OR ( $_.Name -like "System Center Management Health Service Unloaded System Rule*") `
+	-OR ( $_.Name -eq "System Center Management Health Service Unable to Process New Configuration" ) `
+	} | where { $_.TimeRaised -gt $Time }
+	#
 	$DownAgentsOpenTime.MonitoringObjectDisplayName | sort -uniq
 	$DownAgentsClosedTime.MonitoringObjectDisplayName | sort -uniq
 	}
@@ -3886,20 +3886,37 @@ if ( $DownAgentsAlerts.Count -gt 0 )
 #Get SCOM agents in grey state
 # From blog 
 # https://www.powershellbros.com/get-list-unhealthy-scom-agents-grey-state-using-powershell/
+#
 $Agent = Get-SCOMClass -Name Microsoft.Windows.Computer
 $Objects = Get-SCOMMonitoringObject -class:$Agent | Where-Object {$_.IsAvailable -eq $false}
-  
-$Monitored = $Objects | ? { $_.AvailabilityLastModified -gt $Time } | sort -property DisplayName -uniq `
-	| ? { ( $_.DisplayName -like "DC0*" } | ? { $_.InMaintenanceMode -ne $True }
-	#| select AvailabilityLastModified,DisplayName -auto
+$FilteredObjects = $Objects | where { $_.InMaintenanceMode -ne $True } `
+	| where { ( $_.DisplayName -like "DC0*" ) `
+	-OR ( $_.DisplayName -like "*W4NHAAH7*" ) `
+	-OR ( $_.DisplayName -like "*W054AAA0*" ) `
+	-OR ( $_.DisplayName -like "*W054AAA1*" ) `
+	-OR ( $_.DisplayName -like "*W054AAA4*" ) `
+	-OR ( $_.DisplayName -like "*W054AAA7*" ) `
+	-OR ( $_.DisplayName -like "*W054AAC1*" ) `
+	-OR ( $_.DisplayName -like "*W054AADH*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH0*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH1*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH2*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH3*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH4*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH6*" ) `
+	-OR ( $_.DisplayName -like "*W054AAH8*" ) `
+	-OR ( $_.DisplayName -like "*W054AAK9*" ) `
+	}
 
-$Monitored.DisplayName
+$Monitored = $FilteredObjects | where { $_.AvailabilityLastModified -gt $Time } | sort -property DisplayName -uniq
+# $Monitored.DisplayName
 
 # Display list of agents/servers and when modified
-$Monitored | select AvailabilityLastModified,DisplayName
+$FilterMonitored = $Monitored | select AvailabilityLastModified,DisplayName
 
-$NotMonitored = $Objects | ? { $_.AvailabilityLastModified -lt $Time } | sort -property DisplayName -uniq `
-	| ? { ( $_.DisplayName -like "DC0*" ) } | ? { $_.InMaintenanceMode -ne $True }
+
+$NotMonitored = $FilteredObjects | where { $_.AvailabilityLastModified -lt $Time } | sort -property DisplayName -uniq
+
 
 $RepeatDownAgents = @()
 $CurrentDownAgents = @()
@@ -3915,7 +3932,7 @@ if ( $DownAgentsOpenTime.Count -eq 0 )
 if ( $DownAgentsOpenTime.Count -gt 0 )
 	{
 	# Display list of agents/servers and when modified
-	$Monitored | select AvailabilityLastModified,DisplayName
+	# $FilterMonitored
 	If ( $Monitored.Count -gt 0 )
 		{
 		foreach ( $server in $Monitored.DisplayName)
@@ -4072,8 +4089,7 @@ $TotalAgentsFiltered = $TotalAgentIssues | ? { $_ -and $_.Trim() } | select-stri
 # Logical Disk free space alerts
 #===============================================
 
-$LDSTest = $ADDSServerAlerts | ? { $_.Name -eq "Logical disk Free space is low" } `
-	| ? { ( $_.NetBiosComputerName -like "DC0*" ) }
+$LDSTest = $ADDSServerAlerts | ? { $_.Name -eq "Logical disk Free space is low" }
 
 if ( $LDSTest.Count -gt 0 )
 	{
@@ -4098,8 +4114,7 @@ if ( $LDSTest.Count -gt 0 )
 		$LDSOpenDetails = $LDSTest | fl NetbiosComputerName,MonitoringObjectName,Parameters,Description | out-string
 		}
 
-	$ClosedLDSTest = $ClosedADDSAlert | ? { $_.Name -eq "Logical disk Free space is low" } `
-	| ? { ( $_.NetBiosComputerName -like "DC0*" ) }
+	$ClosedLDSTest = $ClosedADDSAlert | ? { $_.Name -eq "Logical disk Free space is low" }
 	$ClosedLDSTest.Count
 
 	if ( $ClosedLDSTest.Count -gt 0 )
@@ -4123,7 +4138,23 @@ $ADDSPKIexpired = $Instance | ? { ( $_.HealthState -ne "Success" ) -AND ( $_.Hea
 	# PKI certs can have Certstore, but it's not always searchable/display capable
 	# } | ? { $_.CertStore -like "Intermediate Certification*" `
 	# PKI certs don't use NetbiosComputerName, and PrincipalName does not output
-	} | ? { ( $_.Path -like "DC0*" ) } # | ft Path,Values -auto -wrap  # DisplayName
+	} | ? { ( $_.Path -like "DC0*" ) `
+	-OR ( $_.Path -like "*W4NHAAH7*" ) `
+	-OR ( $_.Path -like "*W054AAA0*" ) `
+	-OR ( $_.Path -like "*W054AAA1*" ) `
+	-OR ( $_.Path -like "*W054AAA4*" ) `
+	-OR ( $_.Path -like "*W054AAA7*" ) `
+	-OR ( $_.Path -like "*W054AAC1*" ) `
+	-OR ( $_.Path -like "*W054AADH*" ) `
+	-OR ( $_.Path -like "*W054AAH0*" ) `
+	-OR ( $_.Path -like "*W054AAH1*" ) `
+	-OR ( $_.Path -like "*W054AAH2*" ) `
+	-OR ( $_.Path -like "*W054AAH3*" ) `
+	-OR ( $_.Path -like "*W054AAH4*" ) `
+	-OR ( $_.Path -like "*W054AAH6*" ) `
+	-OR ( $_.Path -like "*W054AAH8*" ) `
+	-OR ( $_.Path -like "*W054AAK9*" ) `
+	} # | ft Path,Values -auto -wrap  # DisplayName
 
 $ADDSPKIexpired.count
 
@@ -4132,15 +4163,13 @@ $ADDSPKIexpired.count
 	#} | ? { $_.CertStore -like "Intermediate Certification*" `
 
 $ADDSIntermediate = $Instance | ? { ( $_.HealthState -ne "Success" ) -AND ( $_.HealthState -ne "Uninitialized" ) `
-	} | ? { $_.CertStore -like "Intermediate Certification*" `
-	} | ? { ( $_.Path -like "DC0*" ) }
-$ADDSIntermediate.Count
+	} | ? { $_.CertStore -like "Intermediate Certification*" }
+	# $ADDSIntermediate.Count
 
 
 $ADDSRootCerts = $Instance | ? { ( $_.HealthState -ne "Success" ) -AND ( $_.HealthState -ne "Uninitialized" ) `
-	} | ? { $_.CertStore -like "Root" `
-	} | ? { ( $_.Path -like "DC0*" ) }
-$ADDSRootCerts.Count
+	} | ? { $_.CertStore -like "Root" }
+	# $ADDSRootCerts.Count
 
 
 
@@ -4153,6 +4182,7 @@ if ( $ADDSServerAlerts.Count -eq 0 )
 	{
 	$Message = "ZERO alerts for ADDS Team Daily report for ($date)"
 	$ADDSTeamReport += "ZERO alerts for ADDS Team Daily report for ($date)"
+	$ADDSTeamReport += ""
 	$momapi.LogScriptEvent($ScriptName,$EventID,0,"$Message")
 	}
 
@@ -4199,49 +4229,8 @@ if ( $ADDSServerAlerts.Count -gt 0 )
  	$ADDSTeamReport += "# Total remaining alerts = $($ADDSRemaining.Count)"
 	$ADDSTeamReport += "#========================================================"
 	$ADDSTeamReport += ""
-	$ADDSTeamReport += "# Monitoring Health"
-	$ADDSTeamReport += "#========================================================"
-	$ADDSTeamReport += "# Servers in Maintenance mode = $($MM.Count)"
-	$ADDSTeamReport += "# Unhealthy Agents = $($UnHealthyAgents.Count)"
-	$ADDSTeamReport += "# Down agents = $(($DownAgentsOpenTime.MonitoringObjectDisplayName | sort -uniq).Count)"
-	$ADDSTeamReport += "# Repeatedly Down agents = $($NotMonitored.Count)"
-	$ADDSTeamReport += "# Other Agent failures since last report = $($Monitored.Count)"
-	$ADDSTeamReport += "#========================================================"
-	$ADDSTeamReport += ""
-	$ADDSTeamReport += "# CLOSED alerts"
-	$ADDSTeamReport += "#========================================================"
- 	$ADDSTeamReport += "# Server performance alerts = $($ClosedHighAlerts.Count)"
-	$ADDSTeamReport += "# Logical Disk full alerts = $($ClosedLDSTest.Count)"
- 	$ADDSTeamReport += "# Failed to install MECM application packages = $($ClosedFailedInstallAlerts.Count)"
-	if ( $ClosedProVAlerts.Count -gt 0 )
-		{
-		$ADDSTeamReport += "# Tangible ProV alerts = $($ClosedProVAlerts.Count)"
-		}
-	$ADDSTeamReport += "# DFS-R alerts = $($ClosedDFSRAlerts.Count)"
- 	$ADDSTeamReport += "# DNS alerts = $($ClosedDNSAlerts.Count)"
- 	$ADDSTeamReport += "# DHCP alerts = $($ClosedDHCPAlerts.Count)"
- 	$ADDSTeamReport += "# Group Policy alerts = $($ClosedGPOAlerts.Count)"
-	$ADDSTeamReport += "#========================================================"
- 	$ADDSTeamReport += "# Servers Pending Restart = $($ClosedPendingRestart.Count)"
- 	$ADDSTeamReport += "# Servers NOT rebooted= $($ClosedNotRebooted.Count)"
- 	$ADDSTeamReport += "# Servers NOT patched = $($ClosedNotPatched.Count)"
-	$ADDSTeamReport += "#========================================================"
-	$ADDSTeamReport += ""
-	$ADDSTeamReport += ""
-
-	# Add logic for agents monitored/down/maintenance mode
-	if ( $Compare -eq 0 )
-		{
-		$ADDSTeamReport += "ZERO Agents in maintenance mode as of report run"
-		$ADDSTeamReport += ""
-		}
-	if ( $Compare -gt 0 )
-		{
-		$ADDSTeamReport += "# Agents in maintenance mode"
-		$ADDSTeamReport += "#======================================="
-		$ADDSTeamReport += $Compare
-		$ADDSTeamReport += ""
-		}
+	$ADDSTeamReport += "# Monitoring Health details"
+	$ADDSTeamReport += "#=========================="
 
 
 	if ( $TotalAgentsFiltered.Count -eq 0 )
@@ -4607,7 +4596,7 @@ $bag
 #Log an event for script ending and total execution time.
 $EndTime = Get-Date
 $ScriptTime = ($EndTime - $StartTime).TotalSeconds
-$momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Runtime: ($ScriptTime) seconds.")
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"Proactive Microsoft Windows Server Addendum AD 2016 Reports Script Completed. `n Script Runtime: ($ScriptTime) seconds.")
 #=================================================================================
 # End of script
                 </ScriptBody>
@@ -4633,7 +4622,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
           <Composite>
             <MemberModules>
               <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
-                <ScriptName>Proactive.DailyTasks.ADDS.ComponentAlert.Script.WA.v1045.ps1</ScriptName>
+                <ScriptName>Proactive.DailyTasks.ADDS.ComponentAlert.Script.WA.v1047.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
 #  Script to gather ADDS Component alert consolidation
@@ -4647,7 +4636,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"`n Script Completed. `n Script Ru
 #=================================================================================
 # Assign script name variable for use in event logging.
 # ScriptName should be the same as the ID of the module that the script is contained in
-$ScriptName = "Proactive.DailyTasks.ADDS.ComponentAlert.Script.WA.v1045.ps1"
+$ScriptName = "Proactive.DailyTasks.ADDS.ComponentAlert.Script.WA.v1047.ps1"
 $EventID = "550"
 #=================================================================================
 
@@ -4661,7 +4650,7 @@ $whoami = whoami
 # Load MOMScript API
 $momapi = New-Object -comObject MOM.ScriptAPI
 #Log script event that we are starting task
-$momapi.LogScriptEvent($ScriptName,$EventID,0,"Script is starting.  Running as ($whoami).")
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"Proactive DailyTasks ADDS ComponentAlert DS Script is starting. `n Running as ($whoami).")
 #=================================================================================
 
 
@@ -4707,7 +4696,8 @@ if ( $ADDSPacks.Count -gt 0 )
 	$ADMgmtPackArray += "Active Directory Domain Services for Microsoft Windows Server 2012 R2 (Monitoring)"
 	$ADMgmtPackArray += "Active Directory Domain Services for Microsoft Windows Server 2012 (Monitoring)"
 	$ADMgmtPackArray += "Active Directory Server 2008 and above (Monitoring)"
-	
+
+	$ADMgmtPackArray += "File Services Management Pack for Windows Server 2016 and above"
 	$ADMgmtPackArray += "Microsoft Windows Server 2016 and 1709+ DNS Monitoring"
 	$ADMgmtPackArray += "Microsoft Windows Server DNS Monitoring"
 
@@ -4718,6 +4708,8 @@ if ( $ADDSPacks.Count -gt 0 )
 	$ADMgmtPackArray += "Windows Server 2016 and above Operating Systems (Monitoring)"
 	$ADMgmtPackArray += "Windows Server 2012 R2 Operating System (Monitoring)"
 	$ADMgmtPackArray += "Windows Server 2012 Operating System (Monitoring)"
+
+	$ADMgmtPackArray += "Microsoft Windows Server DHCP 2016 and above"
 
 	$ADMgmtPackArray += "System Center Core Monitoring"
 	}
@@ -4796,7 +4788,7 @@ $ADDSAlerts = get-scomalert -ResolutionState (0..254) | ? { ( $_.Name -like "AD 
 	-OR ( $_.Name -eq "No input provider to sync time" ) `
 	-OR ( $_.Name -eq "PAC Verification Failure" ) `
 	-OR ( $_.Name -eq "Policy Update Failure" ) `
-	-OR ( $_.Name -eq "System Center Management Health Service Unloaded System Rule(s)" ) `
+	-OR ( $_.Name -like "System Center Management Health Service Unloaded System Rule*" ) `
 	-OR ( $_.Name -eq "The account identifier pool for this domain controller cannot be updated" ) `
 	-OR ( $_.Name -eq "The computer name cannot be mapped to an object in Active Directory - this may result in authentication failures" ) `
 	-OR ( $_.Name -eq "The DC was unable to obtain the next account-identifier" ) `
@@ -4843,8 +4835,73 @@ $OpenSCOMCoreReportAlerts = $SCOMCoreReportAlerts | ? { $_.ResolutionState -ne "
 $OpenADDSAlerts.Count
 $OpenSCOMCoreReportAlerts.Count
 
-$ClosedADDSAlerts = $ADDSAlerts | ? { $_.ResolutionState -eq "255"}
-$ClosedSCOMCoreReportAlerts = $SCOMCoreReportAlerts | ? { $_.ResolutionState -ne "255"}
+$ClosedADDSAlerts = get-scomalert -ResolutionState 255 | ? { ( $_.Name -like "AD *" ) `
+	-OR ( $_.Name -eq "DCLocator test failed to locate a domain controller." ) `
+	-OR ( $_.Name -like "Group Policy *" ) `
+	-OR ( $_.Name -like "Logical disk transfer *" ) `
+	-OR ( $_.Name -like "Proactive Windows Storport Miniport Driver has timed out a request" ) `
+	-OR ( $_.Name -eq "Replication Partner Count health monitor has failed." ) `
+	-OR ( $_.Name -like "The*Availability health monitor has failed." ) `
+	-OR ( $_.Name -eq "The Time Skew monitor has failed." ) `
+	-OR ( $_.Name -like "Windows DNS *" ) `
+	-OR ( $_.Name -eq "A dll cannot be loaded because the software was incorrectly installed" ) `
+	-OR ( $_.Name -eq "A RSoP (Resultant Set of Policies) error occurred" ) `
+	-OR ( $_.Name -eq "A user from a different forest logged onto this machine. Group policy processing has been effected." ) `
+	-OR ( $_.Name -eq "Account creation will fail on this domain controller until the account identifier pool is obtained" ) `
+	-OR ( $_.Name -eq "Account Name Not Unique" ) `
+	-OR ( $_.Name -eq "An account name collision occurred - this may result in authentication failures" ) `
+	-OR ( $_.Name -eq "An attempt to check whether group caching is enabled has failed" ) `
+	-OR ( $_.Name -eq "An attempt to set the time was aborted due to the offset being too large" ) `
+	-OR ( $_.Name -eq "An attempt to update user credentials failed" ) `
+	-OR ( $_.Name -eq "Change Password on KRBTGT Account Failed" ) `
+	-OR ( $_.Name -eq "Corrupt Credentials" ) `
+	-OR ( $_.Name -eq "DNS registrations of essential Domain controller records is failing" ) `
+	-OR ( $_.Name -eq "Domain Operation Mode has been changed to Native Mode" ) `
+	-OR ( $_.Name -eq "Duplicate User Principal Names have been detected" ) `
+	-OR ( $_.Name -like "Failed to ping or bind*" ) `
+	-OR ( $_.Name -eq "Group policy processing aborted - cannot determine site" ) `
+	-OR ( $_.Name -eq "Invalid Forwarded AS Request" ) `
+	-OR ( $_.Name -eq "Invalid Policy Data" ) `
+	-OR ( $_.Name -eq "Machine account policy failure - Active Directory GPO lookup failure" ) `
+	-OR ( $_.Name -eq "Machine account policy failure - Security Configuration Engine error occurred" ) `
+	-OR ( $_.Name -eq "Memory Allocation Error - the system may be overloaded" ) `
+	-OR ( $_.Name -eq "No input provider to sync time" ) `
+	-OR ( $_.Name -eq "PAC Verification Failure" ) `
+	-OR ( $_.Name -eq "Policy Update Failure" ) `
+	-OR ( $_.Name -like "System Center Management Health Service Unloaded System Rule*" ) `
+	-OR ( $_.Name -eq "The account identifier pool for this domain controller cannot be updated" ) `
+	-OR ( $_.Name -eq "The computer name cannot be mapped to an object in Active Directory - this may result in authentication failures" ) `
+	-OR ( $_.Name -eq "The DC was unable to obtain the next account-identifier" ) `
+	-OR ( $_.Name -eq "The domain controller failed to obtain a new account identifier pool" ) `
+	-OR ( $_.Name -like "The domain controller has been *" ) `
+	-OR ( $_.Name -eq "The group caching option has now been properly updated" ) `
+	-OR ( $_.Name -eq "The machine account cannot be found" ) `
+	-OR ( $_.Name -eq "The number of Group Policies has exceeded the maximum limit" ) `
+	-OR ( $_.Name -eq "The registry policy file could not be accessed during application of machine policy" ) `
+	-OR ( $_.Name -eq "The system clock has not been synchronized for some time" ) `
+	-OR ( $_.Name -eq "This domain controller will not start up because its machine account has been deleted" ) `
+	-OR ( $_.Name -eq "Trusted Domain List Update Failure" ) `
+	-OR ( $_.Name -eq "Unexpected SAM Failure" ) `
+	-OR ( $_.Name -eq "Windows cannot determine the role of this computer." ) `
+	-OR ( $_.Name -eq "Windows cannot determine the user or computer name." ) `
+	-OR ( $_.Name -eq "Windows cannot obtain the domain controller name for your computer network." ) `
+	-OR ( $_.Name -eq "Windows is setting a registry value" ) `
+	-OR ( $_.Name -eq "A DNS server used by this server for name resolution did not respond within the timeout interval" ) `
+	-OR ( $_.Name -eq "A resource record for the computer name of the DC is not registered in the DNS database" ) `
+	-OR ( $_.Name -eq "One or more of the DC Locator DNS records are not registered in the DNS database since the primary DNS server does not support the dynamic update of the DNS records" ) `
+	-OR ( $_.Name -eq "The DNS server with which this DC will register does not support the dynamic update protocol or the authoritative zone is not configured to allow dynamic updates" ) `
+	-OR ( $_.Name -eq "The computer did not have sufficient rights to perform the secure dynamic update" ) `
+	-OR ( $_.Name -eq "DFS-N: DFS Namespace Service is not Running" ) `
+	-OR ( $_.Name -eq "DFS-R: Incompatible AD DS Schema Version" ) `
+	-OR ( $_.Name -eq "Failed to Connect to Computer" ) `
+	-OR ( $_.Name -eq "Health Service Heartbeat Failure" ) `
+	-OR ( $_.Name -like "Proactive DFSR 500* Event for Replication Partner *Monitor" ) `
+	-OR ( $_.Name -eq "PROACTIVE - Server restart pending detected" ) `
+	-OR ( $_.Name -eq "PROACTIVE - Server NOT patched in past month" ) `
+	-OR ( $_.Name -eq "PROACTIVE - Server NOT rebooted in past month" ) `
+	-OR ( $_.Name -eq "Proactive Windows Storport Miniport Driver has timed out a request" ) `
+}
+$ClosedSCOMCoreReportAlerts = @(Get-SCOMAlert -ResolutionState 255 | ? { ( $_.Name -in $UniqSCOMCoreRules.DisplayName ) -OR ( $_.Name -in $UniqSCOMCoreMonitors.DisplayName ) } )
 
 # Debug
 $ClosedADDSAlerts.Count
@@ -4862,14 +4919,14 @@ $TotalClosedAlerts.Count
 # Parse unique server names to count open alerts
 # $OpenADDSAlerts $OpenSCOMCoreRuleAlerts
 #=============================================================================================
-$UniqADDSAlerts = $TotalOpenAlerts | ? { ( $_.MonitoringObjectDisplayName -match "\b\w{10}(A1|A9)" ) `
-	-OR ( $_.NetbiosComputerName -match "\b\w{10}(A1|A9)" ) `
+$UniqADDSAlerts = $TotalOpenAlerts | ? { ( $_.MonitoringObjectDisplayName -match "\b\w{10}(A0|A1|A4|A7|A9|C1|DH|H0|H1|H2|H3|H4|H6|K9)" ) `
+	-OR ( $_.NetbiosComputerName -match "\b\w{10}(A0|A1|A4|A7|A9|C1|DH|H0|H1|H2|H3|H4|H6|K9)" ) `
 	}
-$UniqOpenADDSAlerts = $TotalOpenAlerts | ? { ( $_.MonitoringObjectDisplayName -match "\b\w{10}(A1|A9)" ) `
-	-OR ( $_.NetbiosComputerName -match "\b\w{10}(A1|A9)" ) `
+$UniqOpenADDSAlerts = $TotalOpenAlerts | ? { ( $_.MonitoringObjectDisplayName -match "\b\w{10}(A0|A1|A4|A7|A9|C1|DH|H0|H1|H2|H3|H4|H6|K9)" ) `
+	-OR ( $_.NetbiosComputerName -match "\b\w{10}(A0|A1|A4|A7|A9|C1|DH|H0|H1|H2|H3|H4|H6|K9)" ) `
 	}
-$UniqClosedADDSAlerts += $TotalClosedAlerts | ? { ( $_.MonitoringObjectDisplayName -match "\b\w{10}(A1|A9)" ) `
-	-OR ( $_.NetbiosComputerName -match "\b\w{10}(A1|A9)" ) `
+$UniqClosedADDSAlerts += $TotalClosedAlerts | ? { ( $_.MonitoringObjectDisplayName -match "\b\w{10}(A0|A1|A4|A7|A9|C1|DH|H0|H1|H2|H3|H4|H6|K9)" ) `
+	-OR ( $_.NetbiosComputerName -match "\b\w{10}(A0|A1|A4|A7|A9|C1|DH|H0|H1|H2|H3|H4|H6|K9)" ) `
 	}
 
 $UniqOpenADDSAlerts.Count
@@ -5028,7 +5085,7 @@ $bag
 #Log an event for script ending and total execution time.
 $EndTime = Get-Date
 $ScriptTime = ($EndTime - $StartTime).TotalSeconds
-$momapi.LogScriptEvent($ScriptName,$EventID,0,"Script Completed.  Script Runtime: ($ScriptTime) seconds.")
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"Proactive DailyTasks ADDS ComponentAlert DS Script Completed.  Script Runtime: ($ScriptTime) seconds.")
 #=================================================================================
 # End of script
                 </ScriptBody>
@@ -5054,7 +5111,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"Script Completed.  Script Runtime
           <Composite>
             <MemberModules>
               <WriteAction ID="PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
-                <ScriptName>Proactive.DailyTasks.ADDS.ComponentAlert.Hourly.TimedPowerShell.Rule.WA.v1045.ps1</ScriptName>
+                <ScriptName>Proactive.DailyTasks.ADDS.ComponentAlert.Hourly.TimedPowerShell.Rule.WA.v1047.ps1</ScriptName>
                 <ScriptBody>
 #=================================================================================
 #  ADDS ComponentAlert script datasource
@@ -5067,7 +5124,7 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"Script Completed.  Script Runtime
 # Constants section - modify stuff here:
 #=================================================================================
 # Assign script name variable for use in event logging.
-$ScriptName = "Proactive.DailyTasks.ADDS.ComponentAlert.Hourly.TimedPowerShell.Rule.DS.v1045.ps1"
+$ScriptName = "Proactive.DailyTasks.ADDS.ComponentAlert.Hourly.TimedPowerShell.Rule.DS.v1047.ps1"
 $EventID = "550"
 #=================================================================================
 
@@ -5081,7 +5138,7 @@ $whoami = whoami
 # Load MOMScript API
 $momapi = New-Object -comObject MOM.ScriptAPI
 #Log script event that we are starting task
-$momapi.LogScriptEvent($ScriptName,$EventID,0,"Script is starting.  Running as ($whoami).")
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"Proactive DailyTasks ADDS ComponentAlert DS Script is starting. `n Running as ($whoami).")
 #=================================================================================
 
 
@@ -5127,7 +5184,8 @@ if ( $ADDSPacks.Count -gt 0 )
 	$ADMgmtPackArray += "Active Directory Domain Services for Microsoft Windows Server 2012 R2 (Monitoring)"
 	$ADMgmtPackArray += "Active Directory Domain Services for Microsoft Windows Server 2012 (Monitoring)"
 	$ADMgmtPackArray += "Active Directory Server 2008 and above (Monitoring)"
-	
+
+	$ADMgmtPackArray += "File Services Management Pack for Windows Server 2016 and above"
 	$ADMgmtPackArray += "Microsoft Windows Server 2016 and 1709+ DNS Monitoring"
 	$ADMgmtPackArray += "Microsoft Windows Server DNS Monitoring"
 
@@ -5138,6 +5196,8 @@ if ( $ADDSPacks.Count -gt 0 )
 	$ADMgmtPackArray += "Windows Server 2016 and above Operating Systems (Monitoring)"
 	$ADMgmtPackArray += "Windows Server 2012 R2 Operating System (Monitoring)"
 	$ADMgmtPackArray += "Windows Server 2012 Operating System (Monitoring)"
+
+	$ADMgmtPackArray += "Microsoft Windows Server DHCP 2016 and above"
 
 	$ADMgmtPackArray += "System Center Core Monitoring"
 	}
@@ -5216,7 +5276,7 @@ $ADDSAlerts = get-scomalert -ResolutionState (0..254) | ? { ( $_.Name -like "AD 
 	-OR ( $_.Name -eq "No input provider to sync time" ) `
 	-OR ( $_.Name -eq "PAC Verification Failure" ) `
 	-OR ( $_.Name -eq "Policy Update Failure" ) `
-	-OR ( $_.Name -eq "System Center Management Health Service Unloaded System Rule(s)" ) `
+	-OR ( $_.Name -like "System Center Management Health Service Unloaded System Rule*" ) `
 	-OR ( $_.Name -eq "The account identifier pool for this domain controller cannot be updated" ) `
 	-OR ( $_.Name -eq "The computer name cannot be mapped to an object in Active Directory - this may result in authentication failures" ) `
 	-OR ( $_.Name -eq "The DC was unable to obtain the next account-identifier" ) `
@@ -5263,8 +5323,73 @@ $OpenSCOMCoreReportAlerts = $SCOMCoreReportAlerts | ? { $_.ResolutionState -ne "
 $OpenADDSAlerts.Count
 $OpenSCOMCoreReportAlerts.Count
 
-$ClosedADDSAlerts = $ADDSAlerts | ? { $_.ResolutionState -eq "255"}
-$ClosedSCOMCoreReportAlerts = $SCOMCoreReportAlerts | ? { $_.ResolutionState -ne "255"}
+$ClosedADDSAlerts = get-scomalert -ResolutionState 255 | ? { ( $_.Name -like "AD *" ) `
+	-OR ( $_.Name -eq "DCLocator test failed to locate a domain controller." ) `
+	-OR ( $_.Name -like "Group Policy *" ) `
+	-OR ( $_.Name -like "Logical disk transfer *" ) `
+	-OR ( $_.Name -like "Proactive Windows Storport Miniport Driver has timed out a request" ) `
+	-OR ( $_.Name -eq "Replication Partner Count health monitor has failed." ) `
+	-OR ( $_.Name -like "The*Availability health monitor has failed." ) `
+	-OR ( $_.Name -eq "The Time Skew monitor has failed." ) `
+	-OR ( $_.Name -like "Windows DNS *" ) `
+	-OR ( $_.Name -eq "A dll cannot be loaded because the software was incorrectly installed" ) `
+	-OR ( $_.Name -eq "A RSoP (Resultant Set of Policies) error occurred" ) `
+	-OR ( $_.Name -eq "A user from a different forest logged onto this machine. Group policy processing has been effected." ) `
+	-OR ( $_.Name -eq "Account creation will fail on this domain controller until the account identifier pool is obtained" ) `
+	-OR ( $_.Name -eq "Account Name Not Unique" ) `
+	-OR ( $_.Name -eq "An account name collision occurred - this may result in authentication failures" ) `
+	-OR ( $_.Name -eq "An attempt to check whether group caching is enabled has failed" ) `
+	-OR ( $_.Name -eq "An attempt to set the time was aborted due to the offset being too large" ) `
+	-OR ( $_.Name -eq "An attempt to update user credentials failed" ) `
+	-OR ( $_.Name -eq "Change Password on KRBTGT Account Failed" ) `
+	-OR ( $_.Name -eq "Corrupt Credentials" ) `
+	-OR ( $_.Name -eq "DNS registrations of essential Domain controller records is failing" ) `
+	-OR ( $_.Name -eq "Domain Operation Mode has been changed to Native Mode" ) `
+	-OR ( $_.Name -eq "Duplicate User Principal Names have been detected" ) `
+	-OR ( $_.Name -like "Failed to ping or bind*" ) `
+	-OR ( $_.Name -eq "Group policy processing aborted - cannot determine site" ) `
+	-OR ( $_.Name -eq "Invalid Forwarded AS Request" ) `
+	-OR ( $_.Name -eq "Invalid Policy Data" ) `
+	-OR ( $_.Name -eq "Machine account policy failure - Active Directory GPO lookup failure" ) `
+	-OR ( $_.Name -eq "Machine account policy failure - Security Configuration Engine error occurred" ) `
+	-OR ( $_.Name -eq "Memory Allocation Error - the system may be overloaded" ) `
+	-OR ( $_.Name -eq "No input provider to sync time" ) `
+	-OR ( $_.Name -eq "PAC Verification Failure" ) `
+	-OR ( $_.Name -eq "Policy Update Failure" ) `
+	-OR ( $_.Name -like "System Center Management Health Service Unloaded System Rule*" ) `
+	-OR ( $_.Name -eq "The account identifier pool for this domain controller cannot be updated" ) `
+	-OR ( $_.Name -eq "The computer name cannot be mapped to an object in Active Directory - this may result in authentication failures" ) `
+	-OR ( $_.Name -eq "The DC was unable to obtain the next account-identifier" ) `
+	-OR ( $_.Name -eq "The domain controller failed to obtain a new account identifier pool" ) `
+	-OR ( $_.Name -like "The domain controller has been *" ) `
+	-OR ( $_.Name -eq "The group caching option has now been properly updated" ) `
+	-OR ( $_.Name -eq "The machine account cannot be found" ) `
+	-OR ( $_.Name -eq "The number of Group Policies has exceeded the maximum limit" ) `
+	-OR ( $_.Name -eq "The registry policy file could not be accessed during application of machine policy" ) `
+	-OR ( $_.Name -eq "The system clock has not been synchronized for some time" ) `
+	-OR ( $_.Name -eq "This domain controller will not start up because its machine account has been deleted" ) `
+	-OR ( $_.Name -eq "Trusted Domain List Update Failure" ) `
+	-OR ( $_.Name -eq "Unexpected SAM Failure" ) `
+	-OR ( $_.Name -eq "Windows cannot determine the role of this computer." ) `
+	-OR ( $_.Name -eq "Windows cannot determine the user or computer name." ) `
+	-OR ( $_.Name -eq "Windows cannot obtain the domain controller name for your computer network." ) `
+	-OR ( $_.Name -eq "Windows is setting a registry value" ) `
+	-OR ( $_.Name -eq "A DNS server used by this server for name resolution did not respond within the timeout interval" ) `
+	-OR ( $_.Name -eq "A resource record for the computer name of the DC is not registered in the DNS database" ) `
+	-OR ( $_.Name -eq "One or more of the DC Locator DNS records are not registered in the DNS database since the primary DNS server does not support the dynamic update of the DNS records" ) `
+	-OR ( $_.Name -eq "The DNS server with which this DC will register does not support the dynamic update protocol or the authoritative zone is not configured to allow dynamic updates" ) `
+	-OR ( $_.Name -eq "The computer did not have sufficient rights to perform the secure dynamic update" ) `
+	-OR ( $_.Name -eq "DFS-N: DFS Namespace Service is not Running" ) `
+	-OR ( $_.Name -eq "DFS-R: Incompatible AD DS Schema Version" ) `
+	-OR ( $_.Name -eq "Failed to Connect to Computer" ) `
+	-OR ( $_.Name -eq "Health Service Heartbeat Failure" ) `
+	-OR ( $_.Name -like "Proactive DFSR 500* Event for Replication Partner *Monitor" ) `
+	-OR ( $_.Name -eq "PROACTIVE - Server restart pending detected" ) `
+	-OR ( $_.Name -eq "PROACTIVE - Server NOT patched in past month" ) `
+	-OR ( $_.Name -eq "PROACTIVE - Server NOT rebooted in past month" ) `
+	-OR ( $_.Name -eq "Proactive Windows Storport Miniport Driver has timed out a request" ) `
+}
+$ClosedSCOMCoreReportAlerts = @(Get-SCOMAlert -ResolutionState 255 | ? { ( $_.Name -in $UniqSCOMCoreRules.DisplayName ) -OR ( $_.Name -in $UniqSCOMCoreMonitors.DisplayName ) } )
 
 # Debug
 $ClosedADDSAlerts.Count
@@ -5282,14 +5407,14 @@ $TotalClosedAlerts.Count
 # Parse unique server names to count open alerts
 # $OpenADDSAlerts $OpenSCOMCoreRuleAlerts
 #=============================================================================================
-$UniqADDSAlerts = $TotalOpenAlerts | ? { ( $_.MonitoringObjectDisplayName -match "\b\w{10}(A1|A9)" ) `
-	-OR ( $_.NetbiosComputerName -match "\b\w{10}(A1|A9)" ) `
+$UniqADDSAlerts = $TotalOpenAlerts | ? { ( $_.MonitoringObjectDisplayName -match "\b\w{10}(A0|A1|A4|A7|A9|C1|DH|H0|H1|H2|H3|H4|H6|K9)" ) `
+	-OR ( $_.NetbiosComputerName -match "\b\w{10}(A0|A1|A4|A7|A9|C1|DH|H0|H1|H2|H3|H4|H6|K9)" ) `
 	}
-$UniqOpenADDSAlerts = $TotalOpenAlerts | ? { ( $_.MonitoringObjectDisplayName -match "\b\w{10}(A1|A9)" ) `
-	-OR ( $_.NetbiosComputerName -match "\b\w{10}(A1|A9)" ) `
+$UniqOpenADDSAlerts = $TotalOpenAlerts | ? { ( $_.MonitoringObjectDisplayName -match "\b\w{10}(A0|A1|A4|A7|A9|C1|DH|H0|H1|H2|H3|H4|H6|K9)" ) `
+	-OR ( $_.NetbiosComputerName -match "\b\w{10}(A0|A1|A4|A7|A9|C1|DH|H0|H1|H2|H3|H4|H6|K9)" ) `
 	}
-$UniqClosedADDSAlerts += $TotalClosedAlerts | ? { ( $_.MonitoringObjectDisplayName -match "\b\w{10}(A1|A9)" ) `
-	-OR ( $_.NetbiosComputerName -match "\b\w{10}(A1|A9)" ) `
+$UniqClosedADDSAlerts += $TotalClosedAlerts | ? { ( $_.MonitoringObjectDisplayName -match "\b\w{10}(A0|A1|A4|A7|A9|C1|DH|H0|H1|H2|H3|H4|H6|K9)" ) `
+	-OR ( $_.NetbiosComputerName -match "\b\w{10}(A0|A1|A4|A7|A9|C1|DH|H0|H1|H2|H3|H4|H6|K9)" ) `
 	}
 
 $UniqOpenADDSAlerts.Count
@@ -5448,7 +5573,7 @@ $bag
 #Log an event for script ending and total execution time.
 $EndTime = Get-Date
 $ScriptTime = ($EndTime - $StartTime).TotalSeconds
-$momapi.LogScriptEvent($ScriptName,$EventID,0,"Script Completed.  Script Runtime: ($ScriptTime) seconds.")
+$momapi.LogScriptEvent($ScriptName,$EventID,0,"Proactive DailyTasks ADDS ComponentAlert DS Script Completed.  Script Runtime: ($ScriptTime) seconds.")
 #=================================================================================
 # End of script
                 </ScriptBody>
@@ -6118,13 +6243,13 @@ $momapi.LogScriptEvent($ScriptName,$EventID,0,"Script Completed.  Script Runtime
             <Scheduler>
               <SimpleReccuringSchedule>
                 <Interval Unit="Seconds">3602</Interval>
-				        <SyncTime>00:02</SyncTime>
+                <SyncTime>00:02</SyncTime>
               </SimpleReccuringSchedule>
               <ExcludeDates />
             </Scheduler>
-          </DataSource>	
+          </DataSource>
         </DataSources>
-		<WriteActions>
+        <WriteActions>
           <WriteAction ID="WA" TypeID="Proactive.DailyTasks.ADDS.ComponentAlert.Hourly.TimedPowerShell.Rule.WA">
             <TimeoutSeconds>300</TimeoutSeconds>
           </WriteAction>
@@ -6850,8 +6975,7 @@ write-host "Script Completed. Script Runtime: ($ScriptTime) seconds."
       <MonitorPropertyOverride ID="Override.Disable.Microsoft.Windows.Server.2016.AD.AvailabilityEssentialService.GroupPolicy.ServiceCheck.Monitor" Context="MWSA6D!Microsoft.Windows.Server.2016.AD.GlobalCatalogServerRole" Enforced="false" Monitor="MWSA6M!Microsoft.Windows.Server.2016.AD.AvailabilityEssentialService.GroupPolicy.ServiceCheck" Property="Enabled">
         <Value>false</Value>
       </MonitorPropertyOverride>
-
-	  <RulePropertyOverride ID="Override.A_RSoP__Resultant_Set_of_Policies__error_occurred_5_Rule" Context="MWSA6D!Microsoft.Windows.Server.2016.AD.DomainControllerRole" Enforced="false" Rule="MWSA6M!A_RSoP__Resultant_Set_of_Policies__error_occurred_5_Rule" Property="Enabled">
+      <RulePropertyOverride ID="Override.A_RSoP__Resultant_Set_of_Policies__error_occurred_5_Rule" Context="MWSA6D!Microsoft.Windows.Server.2016.AD.DomainControllerRole" Enforced="false" Rule="MWSA6M!A_RSoP__Resultant_Set_of_Policies__error_occurred_5_Rule" Property="Enabled">
         <Value>false</Value>
       </RulePropertyOverride>
       <RulePropertyOverride ID="Override.Microsoft.Windows.Server.2016.AD.DirectoryService.Error.EventCollection" Context="MWSA6D!Microsoft.Windows.Server.2016.AD.DomainControllerRole" Enforced="false" Rule="MWSA6M!Microsoft.Windows.Server.2016.AD.DirectoryService.Error.EventCollection" Property="Enabled">
@@ -6926,6 +7050,8 @@ write-host "Script Completed. Script Runtime: ($ScriptTime) seconds."
         <DisplayString ElementID="Microsoft.Windows.Server.AD.2016.Monitoring.Addendum">
           <Name>Microsoft Windows Server ADDS 2016+ Monitoring Addendum</Name>
           <Description>
+v1.0.4.7   5 Nov 2024 Updated report logic for open/closed and server naming conventions
+v1.0.4.6  16 Jan 2024 Updated AD Team report DS/WA $Monitored variable typo for missing parenthesis
 v1.0.4.5  21 Dec 2023 whitespace audit, ResolutionState changes, performance changes to DS/WA
 v1.0.4.2  13 Dec 2023 Updated Rule closure logic, updated Group PolicyReport DS/WA, gpsvc service monitor
 v1.0.4.1  12 Dec 2023 Updated reset logic to use Management Pack, removed ID property from reset logic
@@ -6966,7 +7092,6 @@ v1.0.0.0  10 Jan 2018 Created additional Alert Functionality, Service Recovery T
           <Name>Proactive DailyTasks ADDS Component alert script DataSource</Name>
           <Description>This datasource generates ADDS Component alert script DataSource</Description>
         </DisplayString>
-
         <DisplayString ElementID="Proactive.DailyTasks.ADDSAlerts.Close.Script.Alert.WA">
           <Name>Proactive DailyTasks ADDSAlerts report and auto-close on-demand task</Name>
           <Description>This write-action task generates ADDSAlerts report and auto-close DataSource</Description>
@@ -6987,7 +7112,6 @@ v1.0.0.0  10 Jan 2018 Created additional Alert Functionality, Service Recovery T
           <Name>Proactive DailyTasks ADDS Component Hourly PowerShell rule Write Action</Name>
           <Description>This datasource generates ADDS Component hourly alert</Description>
         </DisplayString>
-
         <DisplayString ElementID="Proactive.ADDS.Repeated.Event.MonitorType">
           <Name>Proactive DailyTasks ADDS Repeated Event MonitorType</Name>
           <Description>This MonitorType changes event monitor to Count Logic - counts x events in y time specified</Description>
@@ -6996,7 +7120,6 @@ v1.0.0.0  10 Jan 2018 Created additional Alert Functionality, Service Recovery T
           <Name>Proactive ADDS Service Monitor MonitorType</Name>
           <Description>This monitor type refers to datasource that adds options service monitor logic</Description>
         </DisplayString>
-
         <DisplayString ElementID="Proactive.DailyTasks.ADDSAlerts.Close.Script.Alert.Rule">
           <Name>Proactive DailyTasks ADDSAlerts Auto-close Report Script Alert Rule</Name>
           <Description>Proactive Scheduled rule to kick off datasource at 0615 M-F</Description>
@@ -7099,7 +7222,6 @@ v1.0.0.0  10 Jan 2018 Created additional Alert Functionality, Service Recovery T
         <DisplayString ElementID="Proactive.DailyTasks.ADDS.ComponentAlert.Hourly.TimedPowerShell.Event.Rule.AlertMessage">
           <Name>Proactive DailyTasks ADDS ComponentAlert Hourly Script Event Rule Alert</Name>
         </DisplayString>
-
         <DisplayString ElementID="Microsoft.Windows.Server.2016.GroupPolicyClient.Service.NotFound.Recovery.Rule">
           <Name>Microsoft Windows Server 2016 GroupPolicyClient Service Recovery Failed - Service Not Found Rule</Name>
         </DisplayString>
@@ -7128,7 +7250,6 @@ v1.0.0.0  10 Jan 2018 Created additional Alert Functionality, Service Recovery T
           <Name>Microsoft Windows Server 2016 GroupPolicyClient Service Recovery has attempted to recover the service too many times</Name>
           <Description>{0}</Description>
         </DisplayString>
-
         <DisplayString ElementID="Proactive.DailyTasks.ADDSAlerts.Report.Script.Task">
           <Name>Proactive DailyTasks ADDSAlerts Autoclose Report Script Task</Name>
           <Description>Proactive DailyTasks ADDSAlerts AutoClose task to kick off on-demand</Description>
@@ -7145,7 +7266,6 @@ v1.0.0.0  10 Jan 2018 Created additional Alert Functionality, Service Recovery T
           <Name>Proactive DailyTasks ADDS ComponentAlert Script Task</Name>
           <Description>Proactive DailyTasks ADDS ComponentAlert Script task to kick off on-demand</Description>
         </DisplayString>
-
         <DisplayString ElementID="Microsoft.Windows.Server.2016.GroupPolicyClient.Service.AvailabilityState.Monitor">
           <Name>Group Policy Client service not running gpsvc Addendum Service Monitor</Name>
         </DisplayString>
@@ -7159,7 +7279,6 @@ v1.0.0.0  10 Jan 2018 Created additional Alert Functionality, Service Recovery T
           <Name>Group Policy Client service not running gpsvc Addendum Service Monitor Is Not Running</Name>
           <Description>{0}</Description>
         </DisplayString>
-
         <DisplayString ElementID="DFS.Service.Recovery.Task">
           <Name>Recover 'DFS Namespace' Service</Name>
           <Description>Created 2018-01-10 for Service Recovery Task</Description>
@@ -7196,7 +7315,6 @@ v1.0.0.0  10 Jan 2018 Created additional Alert Functionality, Service Recovery T
           <Name>Recover 'Active Directory Web Services' Service</Name>
           <Description>Created 2018-01-10 for Service Recovery Task</Description>
         </DisplayString>
-
         <DisplayString ElementID="Override.Microsoft.Windows.Server.2016.AD.Configuration.ReplicationPartnerCount.Monitor">
           <Name>NotUsed</Name>
           <Description>3 Mar 2022 - KWJ - Overriding Replication Partner Count monitor to reflect AD design</Description>
