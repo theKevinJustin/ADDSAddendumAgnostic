@@ -1,5 +1,5 @@
 # ADDSAddendumAgnostic
-Microsoft.Windows.Server.AD.2016.Monitoring.Addendum v1.0.4.6
+Microsoft.Windows.Server.AD.2016.Monitoring.Addendum v1.0.4.7
 
 Download [here](https://github.com/theKevinJustin/ADDSAddendumAgnostic/blob/main/Microsoft.Windows.Server.AD.2016.Monitoring.Addendum.xml)
 
@@ -10,6 +10,7 @@ Blog [https://kevinjustin.com/blog/2023/08/18/adds-addendum-packs/](https://kevi
 
 # Version History:
 ```
+v1.0.4.7   5 Nov 2024 Updated report logic for open/closed and server naming conventions
 v1.0.4.6   4 Jan 2024 Verified Resolution State logic improvements for large environments
 v1.0.4.5  21 Dec 2023 whitespace audit, ResolutionState changes, performance changes to DS/WA
 v1.0.4.2  13 Dec 2023 Updated Rule closure logic, updated Group PolicyReport DS/WA, gpsvc service monitor
